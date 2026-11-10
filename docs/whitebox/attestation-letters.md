@@ -6,7 +6,7 @@ url: https://www.hacktron.ai/docs/whitebox/attestation-letters
 
 # Attestation letters
 
-An attestation letter confirms which application Hacktron assessed and the period of the engagement. Share it with auditors or customers who need evidence of the pentest.
+An attestation letter confirms which application Formant assessed and the period of the engagement. Share it with auditors or customers who need evidence of the pentest.
 
 ## Request a letter
 

@@ -1,22 +1,22 @@
 ---
 title: Context
-description: Give Hacktron lasting context.
+description: Give Formant lasting context.
 url: https://www.hacktron.ai/docs/platform/context
 ---
 
 # Context
 
-Context tells Hacktron how your codebase is organised, what matters most, and which security assumptions should carry into future reviews.
+Context tells Formant how your codebase is organised, what matters most, and which security assumptions should carry into future reviews.
 
-Hacktron combines uploaded documents, repository analysis, triage feedback, and generated threat models, so Review and Whitebox can reason about your system with more than the current diff or pentest target.
+Formant combines uploaded documents, repository analysis, triage feedback, and generated threat models, so Review and Whitebox can reason about your system with more than the current diff or pentest target.
 
 :::note
-Hacktron can [create threat models automatically](#automatically-generated-context) from your code and review activity. It doesn't decide how to group your repositories into applications.
+Formant can [create threat models automatically](#automatically-generated-context) from your code and review activity. It doesn't decide how to group your repositories into applications.
 :::
 
 ## How context is organised
 
-Hacktron keeps context at two levels, the repository and the application.
+Formant keeps context at two levels, the repository and the application.
 
 A repository is the smallest unit of context. For each connected repository you can add documents and view its generated [threat model](/docs/platform/context/threat-models#repository-threat-models).
 
@@ -24,12 +24,12 @@ An application is a group of related repositories that form one product boundary
 
 :::tiles
 - [Applications](/docs/platform/context/applications): Group repositories into one product.
-- [Threat models](/docs/platform/context/threat-models): How Hacktron builds threat models.
+- [Threat models](/docs/platform/context/threat-models): How Formant builds threat models.
 :::
 
 ## Context documents
 
-A **context document** is a file you upload or write to help Hacktron understand a repository or application. Hacktron accepts `.md`, `.markdown`, `.txt`, and `.pdf` files.
+A **context document** is a file you upload or write to help Formant understand a repository or application. Formant accepts `.md`, `.markdown`, `.txt`, and `.pdf` files.
 
 :::tip
 Good context documents include architecture notes, data-flow diagrams, security policies, threat assessments, and earlier pentest reports.
@@ -37,7 +37,7 @@ Good context documents include architecture notes, data-flow diagrams, security 
 
 ## Add a document
 
-Upload or write documents when you want to give Hacktron explicit context from your team.
+Upload or write documents when you want to give Formant explicit context from your team.
 
 ::::steps
 
@@ -63,7 +63,7 @@ Drag in a file, or choose **Write a new document** to write Markdown directly.
 
 ### Add it
 
-Select **Add**. Hacktron saves the document and queues it for the threat model.
+Select **Add**. Formant saves the document and queues it for the threat model.
 
 ### Sync the context
 
@@ -81,9 +81,9 @@ Keep context durable. Prefer stable security assumptions, architecture, data own
 
 ## Automatically generated context
 
-Hacktron creates some context on its own:
+Formant creates some context on its own:
 
-- After you create an application, if every repository in it already has a threat model, Hacktron can generate the application threat model in the background.
+- After you create an application, if every repository in it already has a threat model, Formant can generate the application threat model in the background.
 - After triage, repeated signals, especially false positives and accepted risks, are folded into the repository threat model over time.
-- Before a Whitebox pentest, Hacktron bootstraps a threat model for any application or repository in the pentest that doesn't have one yet.
+- Before a Whitebox pentest, Formant bootstraps a threat model for any application or repository in the pentest that doesn't have one yet.
 - When you upload or remove context documents, you can regenerate the threat model by hand.

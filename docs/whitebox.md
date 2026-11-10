@@ -54,9 +54,9 @@ Each pentest includes one free retest. [Request a retest](/docs/whitebox/retests
 | Status | Meaning |
 | --- | --- |
 | **Draft** | The scope is being prepared and hasn't been estimated or started. |
-| **Estimating** | Hacktron is calculating the credit estimate. |
+| **Estimating** | Formant is calculating the credit estimate. |
 | **Ready to Start** | The estimate is complete and the pentest is waiting for checkout and start. |
-| **Running** | Hacktron is assessing the selected repository and targets. |
+| **Running** | Formant is assessing the selected repository and targets. |
 | **Completed** | The pentest finished and its findings are available. |
 | **Failed** | The pentest couldn't complete. Check the run details or contact support. |
 | **Cancelled** | The pentest was stopped before it completed. |

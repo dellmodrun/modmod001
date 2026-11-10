@@ -6,7 +6,7 @@ url: https://www.hacktron.ai/docs/api/repos/get-pr-review-settings
 
 # Get PR review settings
 
-Returns the pull request review settings configured for your organisation under **Settings** in Hacktron:
+Returns the pull request review settings configured for your organisation under **Settings** in Formant:
 
 - `scm_comments_enabled` says whether reviews post comments and finding details on pull and merge requests.
 - `scm_system_comments_enabled` says whether reviews also post system comments, such as skipped reviews, usage limits, and configuration warnings.
@@ -83,8 +83,8 @@ curl "https://api.hacktron.ai/v1/pr-review-settings" \
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `scm_comments_enabled` | boolean | Whether Hacktron publishes comments and finding details to connected source control pull and merge requests. |
-| `scm_system_comments_enabled` | boolean | Whether Hacktron posts system comments such as skipped reviews, usage limits, and configuration warnings. Defaults to true. Requires scm_comments_enabled. |
+| `scm_comments_enabled` | boolean | Whether Formant publishes comments and finding details to connected source control pull and merge requests. |
+| `scm_system_comments_enabled` | boolean | Whether Formant posts system comments such as skipped reviews, usage limits, and configuration warnings. Defaults to true. Requires scm_comments_enabled. |
 | `fail_on_severity` | string, nullable | Org-wide default fail_on severity threshold for PR/MR checks. A repo's .hacktron/config.yaml fail_on.severity overrides this. Send null to disable. One of `critical`, `high`, `medium`, `low`, or `info`. |
 | `scan_include_branches` | array of string, nullable | Org-wide default target branch patterns to scan PRs/MRs for (null = all branches). Glob patterns (`*`, `**`, `?`, `{a,b}`), case-insensitive. A repo's .hacktron/config.yaml include.branches overrides this. |
 | `scan_exclude_branches` | array of string, nullable | Org-wide default target branch patterns to exclude from PR/MR scans (null = none). Takes precedence over scan_include_branches. A repo's .hacktron/config.yaml exclude.branches overrides this. |

@@ -6,7 +6,7 @@ url: https://www.hacktron.ai/docs/api/findings/get-finding
 
 # Get finding
 
-Returns a single finding with its triage thread, occurrence count, repository URL, scan type, and a Mermaid diagram of the vulnerability trace when Hacktron produced one.
+Returns a single finding with its triage thread, occurrence count, repository URL, scan type, and a Mermaid diagram of the vulnerability trace when Formant produced one.
 
 ## Request
 

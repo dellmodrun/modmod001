@@ -40,7 +40,7 @@ The **Whitebox Scan** tab breaks down the findings from Whitebox pentests and li
 
 ## Next steps
 
-Read where findings are posted and how your triage improves later reviews, or connect your project management, communication, and other tools to Hacktron.
+Read where findings are posted and how your triage improves later reviews, or connect your project management, communication, and other tools to Formant.
 
 :::tiles
 - [Findings and feedback](/docs/review/findings-feedback): Read findings and give feedback.

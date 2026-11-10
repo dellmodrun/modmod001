@@ -1,12 +1,12 @@
 ---
 title: On-premises deployment
-description: Run Hacktron on your own appliance.
+description: Run Formant on your own appliance.
 url: https://www.hacktron.ai/docs/platform/on-premises
 ---
 
 # On-premises deployment
 
-Hacktron Enterprise runs as a single-VM appliance in your environment. This page covers first boot and the operator tasks that Whitebox pentests need. Before you start here, follow the version-specific install or import instructions supplied with your release package.
+Formant Enterprise runs as a single-VM appliance in your environment. This page covers first boot and the operator tasks that Whitebox pentests need. Before you start here, follow the version-specific install or import instructions supplied with your release package.
 
 ## First boot
 
@@ -49,7 +49,7 @@ The appliance blocks private network destinations unless an operator allows the 
 3. If the server certificate uses a private CA or TLS inspection, paste or upload its PEM chain under **Trusted CA certificates**.
 4. Select **Save & Restart**.
 
-Allow only the hosts Hacktron needs. Adding a hostname does not turn off TLS certificate validation.
+Allow only the hosts Formant needs. Adding a hostname does not turn off TLS certificate validation.
 
 ## Test connected repositories and archives
 
@@ -61,7 +61,7 @@ To upload source instead, open **Upload archive** in the repository step. The ap
 
 ## Collect logs in an air-gapped environment
 
-The appliance can build a diagnostic archive without contacting Hacktron. Run:
+The appliance can build a diagnostic archive without contacting Formant. Run:
 
 ```bash
 sudo /opt/enterprise/bin/support-bundle.sh
@@ -73,7 +73,7 @@ The command writes an archive that only its owner can read to:
 /opt/enterprise/support-bundles/support-<version>-<UTCtimestamp>.tar.gz
 ```
 
-The bundle includes service status, recent container logs, complete per-scan worker logs, host resource information, and migration state. It also includes the shape of each configuration file, with secret values masked. Review the archive for sensitive metadata, then send it to Hacktron Support through your organisation's approved process.
+The bundle includes service status, recent container logs, complete per-scan worker logs, host resource information, and migration state. It also includes the shape of each configuration file, with secret values masked. Review the archive for sensitive metadata, then send it to Formant Support through your organisation's approved process.
 
 ## Basic checks
 

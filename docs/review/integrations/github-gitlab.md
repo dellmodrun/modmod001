@@ -19,7 +19,7 @@ Your organisation needs an active GitHub, GitLab, Azure DevOps, or Bitbucket int
 
 ## Link your GitHub or GitLab identity
 
-Hacktron recognises you on GitHub or GitLab once you link that identity to your Hacktron account. Link it to enable Review for an existing Hacktron account, or to link an existing auto-assigned Review seat to a Hacktron account.
+Formant recognises you on GitHub or GitLab once you link that identity to your Formant account. Link it to enable Review for an existing Formant account, or to link an existing auto-assigned Review seat to a Formant account.
 
 ::::steps
 
@@ -33,14 +33,14 @@ Scroll down to **Connected accounts** and click **Connect** next to **GitHub** o
 
 ![Connected accounts, with a Connect button next to GitHub, Slack, and GitLab](https://www.hacktron.ai/shots/review/integrations/github-gitlab/connected_accounts/light.089b5897.webp)
 
-### Authorise Hacktron
+### Authorise Formant
 
 Sign in to GitHub or GitLab and approve the requested access.
 
-### Return to Hacktron
+### Return to Formant
 
-After authorisation, Hacktron sends you back to **Account**.
+After authorisation, Formant sends you back to **Account**.
 
 ::::
 
-Next, read [Findings and feedback](/docs/review/findings-feedback) to see how the feedback you give Hacktron improves future reviews.
+Next, read [Findings and feedback](/docs/review/findings-feedback) to see how the feedback you give Formant improves future reviews.

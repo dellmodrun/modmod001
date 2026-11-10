@@ -1,12 +1,12 @@
 ---
-title: Hacktron documentation
+title: Formant documentation
 description: Review, Whitebox, the API, and MCP.
 url: https://www.hacktron.ai/docs
 ---
 
-# Hacktron documentation
+# Formant documentation
 
-Hacktron's AI agents review your repositories for exploitable vulnerabilities and report them as pull request comments and findings in the dashboard. Hacktron works in two ways: Review runs on every pull or merge request, and Whitebox pentests analyse a repository's full source.
+Formant's AI agents review your repositories for exploitable vulnerabilities and report them as pull request comments and findings in the dashboard. Formant works in two ways: Review runs on every pull or merge request, and Whitebox pentests analyse a repository's full source.
 
 ## Platform
 
@@ -22,7 +22,7 @@ Hacktron's AI agents review your repositories for exploitable vulnerabilities an
 The REST API gives programmatic access to scans, findings, and cost estimations.
 
 :::tiles
-- [API overview](/docs/api): Programmatic access to Hacktron.
+- [API overview](/docs/api): Programmatic access to Formant.
 - [Authentication](/docs/api/authentication): API keys and authenticated requests.
 - [Trigger a pentest](/docs/api/scans/create-scan): Start a pentest from a cost estimation.
 - [List findings](/docs/api/findings/list-findings): List findings across all scans.

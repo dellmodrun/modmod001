@@ -6,7 +6,7 @@ url: https://www.hacktron.ai/docs/review/rules
 
 # Project rules
 
-Hacktron can use repository-specific context when it reviews pull requests. Add a `.hacktron/rules.md` file that describes the conventions that matter in your application. Rules help Hacktron adapt its reviews to your codebase and report fewer false positives, without ignoring real vulnerabilities.
+Formant can use repository-specific context when it reviews pull requests. Add a `.hacktron/rules.md` file that describes the conventions that matter in your application. Rules help Formant adapt its reviews to your codebase and report fewer false positives, without ignoring real vulnerabilities.
 
 ## What to include
 
@@ -15,7 +15,7 @@ Use rules to explain:
 - internal authentication and authorisation patterns
 - trusted services, domains, and data sources
 - context outside the code that affects exploitability, such as firewalls or network configuration that isn't in infrastructure as code
-- files or types of vulnerabilities Hacktron should ignore
+- files or types of vulnerabilities Formant should ignore
 
 ## File location
 
@@ -30,7 +30,7 @@ package.json
 pnpm-lock.yaml
 ```
 
-Commit `.hacktron/rules.md` to the branch Hacktron reviews, such as your default branch.
+Commit `.hacktron/rules.md` to the branch Formant reviews, such as your default branch.
 
 ## Example
 

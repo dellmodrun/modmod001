@@ -6,7 +6,7 @@ url: https://www.hacktron.ai/docs/review/troubleshooting
 
 # Troubleshooting
 
-Use this page when Hacktron didn't review a pull request or merge request, or when Review coverage doesn't behave as you expect.
+Use this page when Formant didn't review a pull request or merge request, or when Review coverage doesn't behave as you expect.
 
 ## If a review doesn't run
 
@@ -25,7 +25,7 @@ Check these first:
 
 ## Repository is missing
 
-If a repository doesn't appear in Hacktron:
+If a repository doesn't appear in Formant:
 
 - Confirm that the Git provider installation includes the repository.
 - If you added the repository recently, go to **Repositories** and sync again.
@@ -33,14 +33,14 @@ If a repository doesn't appear in Hacktron:
 
 ## Branch is not covered
 
-If Hacktron reviews only some pull requests or merge requests:
+If Formant reviews only some pull requests or merge requests:
 
 - Confirm that the target branch is covered in the repository settings.
-- If coverage is limited to specific branches, Hacktron skips pull requests that target other branches.
+- If coverage is limited to specific branches, Formant skips pull requests that target other branches.
 
 ## Developer is not covered
 
-If a developer has no Review seat, Hacktron marks the check as skipped. If [comments to source control](/docs/platform/organization-settings#post-comments-to-source-control) are on, Hacktron also leaves a comment on the pull request explaining that no seat is assigned.
+If a developer has no Review seat, Formant marks the check as skipped. If [comments to source control](/docs/platform/organization-settings#post-comments-to-source-control) are on, Formant also leaves a comment on the pull request explaining that no seat is assigned.
 
 Check **Billing** to confirm that the organisation has trial or paid review capacity available.
 
@@ -48,7 +48,7 @@ If auto-assigned seats are on and a new developer didn't get a seat, you may nee
 
 ## Pull request or merge request is too large
 
-Hacktron skips pull requests and merge requests with more than 500 changed files.
+Formant skips pull requests and merge requests with more than 500 changed files.
 
 [Enable reviews on every pull and merge request](/docs/review/setup#configure-review) so smaller changes are reviewed before they reach a large deployment pull request.
 

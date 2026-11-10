@@ -34,7 +34,7 @@ Content-Type: application/sarif+json; charset=utf-8
 Content-Disposition: attachment; filename="findings.sarif"
 ```
 
-Returns a [SARIF 2.1.0](https://sarifweb.azurewebsites.net/) document. GitHub code scanning, Azure DevOps, and most IDE security plugins read SARIF, so use this format to bring Hacktron findings into the security tooling you already use.
+Returns a [SARIF 2.1.0](https://sarifweb.azurewebsites.net/) document. GitHub code scanning, Azure DevOps, and most IDE security plugins read SARIF, so use this format to bring Formant findings into the security tooling you already use.
 
 ## Request
 

@@ -10,7 +10,7 @@ This guide is for GitHub Enterprise Server customers with a custom domain. Organ
 
 ## Configure access
 
-You can give Hacktron access to a GitHub Enterprise Server instance in two ways:
+You can give Formant access to a GitHub Enterprise Server instance in two ways:
 
 | Method | Used for |
 | --- | --- |
@@ -19,7 +19,7 @@ You can give Hacktron access to a GitHub Enterprise Server instance in two ways:
 
 The GitHub App flow registers a GitHub App on your server and redirects you to your instance to create it. A GitHub organisation owner must complete it.
 
-A personal access token gives Hacktron access to repositories for Whitebox pentests.
+A personal access token gives Formant access to repositories for Whitebox pentests.
 
 :::warning
 Pull request reviews are not available with a personal access token. Use the [GitHub App](#configure-github-app) for them.
@@ -31,9 +31,9 @@ Pull request reviews are not available with a personal access token. Use the [Gi
 
 ### Open Integrations
 
-In Hacktron, go to **Integrations** and click **Connect** under **GitHub Enterprise Server**.
+In Formant, go to **Integrations** and click **Connect** under **GitHub Enterprise Server**.
 
-![The GitHub Enterprise Server row in Hacktron's Integrations](https://www.hacktron.ai/shots/platform/repositories/github-enterprise-server/ghes_connect/light.35f08019.webp)
+![The GitHub Enterprise Server row in Formant's Integrations](https://www.hacktron.ai/shots/platform/repositories/github-enterprise-server/ghes_connect/light.35f08019.webp)
 
 ### Start the GitHub App installation
 
@@ -47,13 +47,13 @@ You must be an owner of the organisation to install the GitHub App.
 
 If GitHub asks you to sign in, enter your GitHub credentials as usual.
 
-### Register Hacktron as a new GitHub App
+### Register Formant as a new GitHub App
 
 GitHub asks you to create a new GitHub App. Give it a descriptive name (`hacktron-app` by default).
 
 ![Create GitHub App on the server, with the name hacktron-app](https://www.hacktron.ai/shots/platform/repositories/github-enterprise-server/ghes_create_app/light.bfbda6c2.webp)
 
-Click **Create GitHub App**. This creates a GitHub App with the permissions Hacktron needs.
+Click **Create GitHub App**. This creates a GitHub App with the permissions Formant needs.
 
 ### Install the GitHub App
 
@@ -64,7 +64,7 @@ Your browser redirects you to install the app you registered.
 Select the repositories to grant access to, then click **Install**.
 
 :::note
-Hacktron asks for read access to code, members, and metadata, and read and write access to checks, issues, and pull requests. It needs them for Review, issue management, and opening pull requests. Hacktron keeps no source code once each review is complete.
+Formant asks for read access to code, members, and metadata, and read and write access to checks, issues, and pull requests. It needs them for Review, issue management, and opening pull requests. Formant keeps no source code once each review is complete.
 :::
 
 ::::
@@ -79,7 +79,7 @@ Go to `http://<your-server>/settings/personal-access-tokens/new`, or click your 
 
 ### Create the token
 
-Give the token a descriptive name, such as "Hacktron", and select the repositories to grant access to.
+Give the token a descriptive name, such as "Formant", and select the repositories to grant access to.
 
 :::tip
 You can change this later.
@@ -96,9 +96,9 @@ Whitebox pentests need these permissions.
 
 Click **Create token**. Copy the token and save it somewhere secure.
 
-### Add the token to Hacktron
+### Add the token to Formant
 
-On the **Integrations** page in Hacktron, click **Connect** under **GitHub Enterprise Server** and select the **Personal access token** option.
+On the **Integrations** page in Formant, click **Connect** under **GitHub Enterprise Server** and select the **Personal access token** option.
 
 ![The GitHub Enterprise Server dialog with the Personal access token option selected](https://www.hacktron.ai/shots/platform/repositories/github-enterprise-server/ghes_personal_access_token/light.1e4994e9.webp)
 
@@ -121,6 +121,6 @@ If the server uses a private network address, add its hostname to the appliance'
 The on-premises guide covers first boot, internal Git access, and air-gapped support. The Whitebox quickstart covers selecting a source, defining the scope, and running the pentest.
 
 :::tiles
-- [On-premises deployment](/docs/platform/on-premises): Run Hacktron on your own appliance.
+- [On-premises deployment](/docs/platform/on-premises): Run Formant on your own appliance.
 - [Quickstart](/docs/whitebox/quickstart): Scope, estimate, and start a pentest.
 :::

@@ -1254,7 +1254,7 @@
             "description": "The pentest has no login targets"
           }
         },
-        "summary": "Check that Hacktron can sign in to each login target, which it must before the pentest starts",
+        "summary": "Check that Formant can sign in to each login target, which it must before the pentest starts",
         "tags": ["REST API - Pentests"]
       }
     },
@@ -1421,7 +1421,7 @@
             }
           }
         },
-        "summary": "Turn PR/MR reviews on or off for repositories, by their id from the repository list. A repository must be selected for Hacktron access before its reviews can be turned on.",
+        "summary": "Turn PR/MR reviews on or off for repositories, by their id from the repository list. A repository must be selected for Formant access before its reviews can be turned on.",
         "tags": ["REST API - Repos"]
       }
     },
@@ -1495,8 +1495,8 @@
     }
   },
   "info": {
-    "title": "Hacktron REST API",
-    "description": "Public REST API for programmatic access to Hacktron",
+    "title": "Formant REST API",
+    "description": "Public REST API for programmatic access to Formant",
     "version": "1.0",
     "contact": {}
   },
@@ -3069,7 +3069,7 @@
               "cancelled",
               "expired"
             ],
-            "description": "Whether Hacktron could sign in with the login the site has now. A pass lasts an hour, and changing the site or login makes it unverified."
+            "description": "Whether Formant could sign in with the login the site has now. A pass lasts an hour, and changing the site or login makes it unverified."
           },
           "failure_reason": {
             "type": "string",
@@ -3411,11 +3411,11 @@
         "properties": {
           "scm_comments_enabled": {
             "type": "boolean",
-            "description": "Whether Hacktron publishes comments and finding details to connected source control pull and merge requests"
+            "description": "Whether Formant publishes comments and finding details to connected source control pull and merge requests"
           },
           "scm_system_comments_enabled": {
             "type": "boolean",
-            "description": "Whether Hacktron posts system comments such as skipped reviews, usage limits, and configuration warnings. Defaults to true. Requires scm_comments_enabled."
+            "description": "Whether Formant posts system comments such as skipped reviews, usage limits, and configuration warnings. Defaults to true. Requires scm_comments_enabled."
           },
           "fail_on_severity": {
             "type": "string",

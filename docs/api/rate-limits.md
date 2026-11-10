@@ -6,7 +6,7 @@ url: https://www.hacktron.ai/docs/api/rate-limits
 
 # Rate limits
 
-The Hacktron REST API limits the number of requests each API key can make.
+The Formant REST API limits the number of requests each API key can make.
 
 ## Limit
 
@@ -38,7 +38,7 @@ When a client gets a `429`, it should:
 
 1. Stop sending requests with that key.
 2. Retry with exponential backoff, for example after 1s, 2s, 4s, and 8s.
-3. If it hits the limit consistently, spread the work over a longer window or ask Hacktron support for a higher quota.
+3. If it hits the limit consistently, spread the work over a longer window or ask Formant support for a higher quota.
 
 For work that needs more sustained throughput, such as backfilling findings into an external system, email support at [founders@hacktron.ai](mailto:founders@hacktron.ai) with the use case.
 

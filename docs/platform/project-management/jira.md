@@ -8,9 +8,9 @@ url: https://www.hacktron.ai/docs/platform/project-management/jira
 
 ## Prerequisites
 
-You need to be a Hacktron organisation admin to manage the Jira integration.
+You need to be a Formant organisation admin to manage the Jira integration.
 
-You also need permission to authorise apps in the Jira workspace you want Hacktron to use.
+You also need permission to authorise apps in the Jira workspace you want Formant to use.
 
 ## Configure Jira
 
@@ -18,7 +18,7 @@ You also need permission to authorise apps in the Jira workspace you want Hacktr
 
 ### Open Integrations
 
-In Hacktron, go to **Integrations** and find **Jira** under **Issue tracking**.
+In Formant, go to **Integrations** and find **Jira** under **Issue tracking**.
 
 ![The Jira row in Integrations, with its Connect button](https://www.hacktron.ai/shots/platform/project-management/jira/jira_card/light.9bebd61f.webp)
 
@@ -30,16 +30,16 @@ Click **Connect**. Your browser redirects to Atlassian.
 
 If Atlassian asks you to sign in, sign in with your Atlassian account as you normally would.
 
-### Authorise Hacktron
+### Authorise Formant
 
-Hacktron asks for access to view and create Jira tickets.
+Formant asks for access to view and create Jira tickets.
 
-![Atlassian's consent screen, where Hacktron asks to view jira-user and jira-work and to update jira-work](https://www.hacktron.ai/shots/platform/project-management/jira/jira_authorize/light.cbee31d6.webp)
+![Atlassian's consent screen, where Formant asks to view jira-user and jira-work and to update jira-work](https://www.hacktron.ai/shots/platform/project-management/jira/jira_authorize/light.cbee31d6.webp)
 
 Click **Accept**.
 
 :::note
-Hacktron requests:
+Formant requests:
 
 - read access to `jira-user`
 - read and write access to `jira-work`
@@ -47,13 +47,13 @@ Hacktron requests:
 It uses this access to create Jira tickets for security findings and to link each ticket back to its finding.
 :::
 
-### Return to Hacktron
+### Return to Formant
 
-After you authorise it, Hacktron redirects you back to **Integrations** and opens the Jira configuration panel.
+After you authorise it, Formant redirects you back to **Integrations** and opens the Jira configuration panel.
 
 ### Choose auto-create behaviour
 
-Turn on **Automatically create tickets** for Hacktron to create a Jira ticket for every security finding.
+Turn on **Automatically create tickets** for Formant to create a Jira ticket for every security finding.
 
 :::tip
 With auto-create off, you can still create Jira tickets by hand from the finding detail view.
@@ -61,7 +61,7 @@ With auto-create off, you can still create Jira tickets by hand from the finding
 
 ### Choose ticket defaults
 
-Select the default Jira project and issue type. Hacktron uses them for the Jira tickets it creates for security findings.
+Select the default Jira project and issue type. Formant uses them for the Jira tickets it creates for security findings.
 
 :::note
 A default project and issue type are required when auto-create is on. You can change them later.
@@ -83,7 +83,7 @@ Click **Save** to apply the Jira configuration.
 
 ## Using Jira tickets
 
-After Jira is connected, open an approved finding and choose **Create on Jira** to create a Jira issue by hand. If the finding already has a Jira issue, Hacktron shows **View on Jira** instead.
+After Jira is connected, open an approved finding and choose **Create on Jira** to create a Jira issue by hand. If the finding already has a Jira issue, Formant shows **View on Jira** instead.
 
 ## Common checks
 

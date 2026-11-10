@@ -6,14 +6,14 @@ url: https://www.hacktron.ai/docs/whitebox/quickstart
 
 # Quickstart
 
-This guide prepares the scope of a Whitebox pentest and starts it from the Hacktron dashboard.
+This guide prepares the scope of a Whitebox pentest and starts it from the Formant dashboard.
 
 ## Prerequisites
 
 Before you start, make sure the organisation has:
 
 - a connected repository or an uploaded archive to test
-- the branch or commit Hacktron should use
+- the branch or commit Formant should use
 - for dynamic testing, the domain or URL of each application to test and instructions for reaching it, even when no sign-in is required
 - enough Whitebox Scan credits, or an organisation owner who can add a payment method and buy credits
 
@@ -27,7 +27,7 @@ On-premises deployments can select an enabled GitHub Enterprise Server repositor
 
 ### Open Whitebox Scans
 
-In the Hacktron dashboard, open **Whitebox Scans** and create a new scan.
+In the Formant dashboard, open **Whitebox Scans** and create a new scan.
 
 ![A new scan opened from Whitebox Scans in the dashboard](https://www.hacktron.ai/shots/whitebox/quickstart/whitebox_open_scan/light.14f2d7ff.webp)
 
@@ -63,7 +63,7 @@ For more control, choose **Edit as patterns** in the folder picker to set [**Inc
 Dynamic testing is optional. Choose **Skip adding targets** to continue with a pentest of the source code alone, without testing a deployed application.
 :::
 
-In **Define targets**, add each application Hacktron should test:
+In **Define targets**, add each application Formant should test:
 
 1. Enter its **Domain**, such as `https://staging.example.com`.
 2. Fill in **Auth instructions** with the login steps, dedicated test credentials, and how to confirm that access worked. For a public site, say that no login is required and describe the page that should load.
@@ -81,7 +81,7 @@ In **Context documents**, add architecture notes, threat models, API specs, or o
 
 ### Estimate the cost
 
-Click **Calculate cost** in **Cost calculation** and wait for it to finish. Hacktron estimates the credit cost from the selected repositories and scope before the pentest can start.
+Click **Calculate cost** in **Cost calculation** and wait for it to finish. Formant estimates the credit cost from the selected repositories and scope before the pentest can start.
 
 Check the number of matching files for each repository. If none match, click **Edit scope** to change the paths. Any change to the scope resets the estimate, so calculate it again before you start.
 
@@ -89,7 +89,7 @@ Check the number of matching files for each repository. If none match, click **E
 
 ### Review and start
 
-Review the scope and the estimated credit cost. When the pentest starts, Hacktron deducts the estimated credits from the organisation's Whitebox Scan credit balance. If the balance is too low, an owner can buy credits during checkout.
+Review the scope and the estimated credit cost. When the pentest starts, Formant deducts the estimated credits from the organisation's Whitebox Scan credit balance. If the balance is too low, an owner can buy credits during checkout.
 
 ![The credit summary before the pentest starts](https://www.hacktron.ai/shots/whitebox/quickstart/whitebox_credit_summary/light.e8be8b2a.webp)
 
@@ -157,11 +157,11 @@ Auth instructions are shared with AI agents for testing. Use a test environment 
 
 To repeat an assessment, [schedule whitebox scans](/docs/platform/automations/scheduled-whitebox-scans) and save the scan settings for each environment.
 
-You can also prepare a pentest in Slack, from Claude, Cursor, or another AI assistant connected to Hacktron's MCP server, or through the REST API. Set the scope and review the credit estimate before you start. An organisation admin has to start the pentest. In Slack, mention `@Hacktron AI` with a repository or an attached archive. The API creates a pentest draft from repositories or archives, with optional live sites, or starts a code-only scan from a completed cost estimation.
+You can also prepare a pentest in Slack, from Claude, Cursor, or another AI assistant connected to Formant's MCP server, or through the REST API. Set the scope and review the credit estimate before you start. An organisation admin has to start the pentest. In Slack, mention `@Formant AI` with a repository or an attached archive. The API creates a pentest draft from repositories or archives, with optional live sites, or starts a code-only scan from a completed cost estimation.
 
 :::tiles
-- [Hacktron in Slack](/docs/platform/slack-assistant): Ask questions and triage in Slack.
-- [MCP](/docs/mcp): Connect an AI assistant to Hacktron.
+- [Formant in Slack](/docs/platform/slack-assistant): Ask questions and triage in Slack.
+- [MCP](/docs/mcp): Connect an AI assistant to Formant.
 - [Create a pentest draft](/docs/api/pentests/create-pentest): Create a pentest that hasn't started.
 - [Trigger a pentest](/docs/api/scans/create-scan): Start a pentest from a cost estimation.
 :::
@@ -170,5 +170,5 @@ You can also prepare a pentest in Slack, from Claude, Cursor, or another AI assi
 
 :::tiles
 - [Credits and billing](/docs/whitebox/billing): Credits, estimates, and refunds.
-- [On-premises deployment](/docs/platform/on-premises): Run Hacktron on your own appliance.
+- [On-premises deployment](/docs/platform/on-premises): Run Formant on your own appliance.
 :::

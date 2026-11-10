@@ -10,9 +10,9 @@ This guide covers GitHub Free, GitHub Team, and GitHub Enterprise Cloud.
 
 ## Prerequisites
 
-To install the Hacktron GitHub App, you need to be an owner of the GitHub organisation or an admin of the repositories you want to connect, or have permission from an owner or admin.
+To install the Formant GitHub App, you need to be an owner of the GitHub organisation or an admin of the repositories you want to connect, or have permission from an owner or admin.
 
-If you are neither, you can still follow the steps below. GitHub prompts you to request approval from an organisation owner, and once they approve, Hacktron is installed for the selected repositories.
+If you are neither, you can still follow the steps below. GitHub prompts you to request approval from an organisation owner, and once they approve, Formant is installed for the selected repositories.
 
 ## Configure access
 
@@ -20,13 +20,13 @@ If you are neither, you can still follow the steps below. GitHub prompts you to 
 
 ### Open Integrations
 
-In Hacktron, go to **Integrations** and choose the GitHub connection.
+In Formant, go to **Integrations** and choose the GitHub connection.
 
 ### Start the GitHub App installation
 
 Click **Connect**, then **Install app** in the dialog. Your browser redirects to GitHub.com.
 
-![The GitHub dialog in Hacktron's Integrations, with the button that installs the app](https://www.hacktron.ai/shots/platform/repositories/github/github_install_app/light.7b2df2d8.webp)
+![The GitHub dialog in Formant's Integrations, with the button that installs the app](https://www.hacktron.ai/shots/platform/repositories/github/github_install_app/light.7b2df2d8.webp)
 
 ### Sign in to GitHub
 
@@ -34,11 +34,11 @@ If GitHub asks you to sign in, enter your GitHub credentials as usual.
 
 ### Select an organisation
 
-Choose the organisation to install Hacktron in. If you belong to several, select it from the list. For personal repositories, select your account name.
+Choose the organisation to install Formant in. If you belong to several, select it from the list. For personal repositories, select your account name.
 
 ### Select repositories
 
-Choose which repositories Hacktron can access:
+Choose which repositories Formant can access:
 
 - **All repositories** grants access to every current and future repository the organisation owns, public repositories included.
 - **Only select repositories** limits access to the repositories you pick from the list.
@@ -52,7 +52,7 @@ You can change this later.
 Review the permissions, then click **Install & Authorize**.
 
 :::note
-Hacktron asks for read access to members and metadata, and read and write access to checks, code, issues, and pull requests. It needs them for Review, issue management, and opening pull requests. Hacktron keeps no source code once each review is complete.
+Formant asks for read access to members and metadata, and read and write access to checks, code, issues, and pull requests. It needs them for Review, issue management, and opening pull requests. Formant keeps no source code once each review is complete.
 :::
 
 :::tip
@@ -61,4 +61,4 @@ If you are not an organisation owner or repository admin, the button says **Auth
 
 ::::
 
-Hacktron then reviews every pull request in the selected repositories.
+Formant then reviews every pull request in the selected repositories.

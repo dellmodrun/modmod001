@@ -6,7 +6,7 @@ url: https://www.hacktron.ai/docs/whitebox/retests
 
 # Retests
 
-Once you have fixed the findings of a pentest, ask the Hacktron team to verify the fixes.
+Once you have fixed the findings of a pentest, ask the Formant team to verify the fixes.
 
 :::warning
 Each scan includes one free retest. You can request it once per scan, so wait until your fixes are ready.

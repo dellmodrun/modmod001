@@ -6,7 +6,7 @@ url: https://www.hacktron.ai/docs/platform
 
 # Platform overview
 
-Use the Hacktron platform to manage integrations, Review, Whitebox pentests, access, and billing across your organisation.
+Use the Formant platform to manage integrations, Review, Whitebox pentests, access, and billing across your organisation.
 
 :::tiles
 - [Dashboard](/docs/platform/dashboard): Track Review and Whitebox activity.
@@ -15,13 +15,13 @@ Use the Hacktron platform to manage integrations, Review, Whitebox pentests, acc
 ## Assistant
 
 :::tiles
-- [Hacktron in Slack](/docs/platform/slack-assistant): Ask questions and triage in Slack.
+- [Formant in Slack](/docs/platform/slack-assistant): Ask questions and triage in Slack.
 :::
 
 ## Setup
 
 :::tiles
-- [On-premises deployment](/docs/platform/on-premises): Run Hacktron on your own appliance.
+- [On-premises deployment](/docs/platform/on-premises): Run Formant on your own appliance.
 - [Integrations](/docs/platform/integrations): Connect Git, tickets, and chat tools.
 :::
 
@@ -54,9 +54,9 @@ Use the Hacktron platform to manage integrations, Review, Whitebox pentests, acc
 ## Context
 
 :::tiles
-- [Context](/docs/platform/context): Give Hacktron lasting context.
+- [Context](/docs/platform/context): Give Formant lasting context.
 - [Applications](/docs/platform/context/applications): Group repositories into one product.
-- [Threat models](/docs/platform/context/threat-models): How Hacktron builds threat models.
+- [Threat models](/docs/platform/context/threat-models): How Formant builds threat models.
 :::
 
 ## Automations
@@ -80,8 +80,8 @@ Use the Hacktron platform to manage integrations, Review, Whitebox pentests, acc
 ## Resources
 
 :::tiles
-- [Privacy](/docs/privacy): How Hacktron handles your data.
-- [Security](/docs/security): Report a vulnerability in Hacktron.
+- [Privacy](/docs/privacy): How Formant handles your data.
+- [Security](/docs/security): Report a vulnerability in Formant.
 :::
 
 ## Quickstart
@@ -90,7 +90,7 @@ Use the Hacktron platform to manage integrations, Review, Whitebox pentests, acc
 
 ### Create your organisation
 
-[Sign up](https://app.hacktron.ai/signup) to create your organisation in Hacktron.
+[Sign up](https://app.hacktron.ai/signup) to create your organisation in Formant.
 
 ### Invite your team
 
@@ -98,7 +98,7 @@ During onboarding, invite your team to the organisation with an invitation email
 
 ### Connect your Git provider
 
-Connect GitHub Team, GitHub Enterprise Cloud, GitHub Enterprise Server, GitLab, Azure DevOps, or Bitbucket so Hacktron can access your code. [Repositories](/docs/platform/repositories) covers each provider.
+Connect GitHub Team, GitHub Enterprise Cloud, GitHub Enterprise Server, GitLab, Azure DevOps, or Bitbucket so Formant can access your code. [Repositories](/docs/platform/repositories) covers each provider.
 
 ### Start the free trial
 
@@ -106,9 +106,9 @@ Every organisation gets a 14-day free trial.
 
 ### Work with us in Slack
 
-This step is optional. Create a Slack channel with the Hacktron team to give feedback and get direct support.
+This step is optional. Create a Slack channel with the Formant team to give feedback and get direct support.
 
-![The invitation to a shared Slack channel with the Hacktron team](https://www.hacktron.ai/shots/platform/slack_invite/light.63dad14b.webp)
+![The invitation to a shared Slack channel with the Formant team](https://www.hacktron.ai/shots/platform/slack_invite/light.63dad14b.webp)
 
 :::note
 The invitation appears only when you sign up with a work email address.
@@ -121,7 +121,7 @@ The invitation appears only when you sign up with a work email address.
 :::tiles
 - [Review](/docs/review): Review every pull and merge request.
 - [Whitebox](/docs/whitebox): Scoped pentests on shared credits.
-- [API overview](/docs/api): Programmatic access to Hacktron.
+- [API overview](/docs/api): Programmatic access to Formant.
 :::
 
-If you need an integration Hacktron doesn't support yet, [contact us](/contact?for=support) and we'll share the roadmap.
+If you need an integration Formant doesn't support yet, [contact us](/contact?for=support) and we'll share the roadmap.

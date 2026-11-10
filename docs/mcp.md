@@ -1,12 +1,12 @@
 ---
 title: MCP
-description: Connect an AI assistant to Hacktron.
+description: Connect an AI assistant to Formant.
 url: https://www.hacktron.ai/docs/mcp
 ---
 
 # MCP
 
-Hacktron's MCP server is at `https://mcp.hacktron.ai/mcp`. Choose your client and copy its configuration. You sign in to Hacktron in the browser, so no API key is required.
+Formant's MCP server is at `https://mcp.hacktron.ai/mcp`. Choose your client and copy its configuration. You sign in to Formant in the browser, so no API key is required.
 
 ## Connect your client
 
@@ -24,7 +24,7 @@ Then authenticate the connection:
 
 1. Start Claude Code in your project.
 2. Type `/mcp`, select `hacktron`, and choose **Authenticate**.
-3. Complete the Hacktron sign-in in the browser.
+3. Complete the Formant sign-in in the browser.
 
 To use an API key instead, create an organisation API key with the [authentication guide](/docs/api/authentication#creating-an-api-key). Grant `read` and `write` access if your assistant should triage findings.
 
@@ -57,7 +57,7 @@ Add the server to Claude Desktop's configuration:
 
 Restart Claude Desktop to apply the change.
 
-The first time Claude Desktop connects to Hacktron, complete the Hacktron sign-in in the browser. If the prompt doesn't appear, open Claude Desktop's MCP server settings and reconnect `hacktron`.
+The first time Claude Desktop connects to Formant, complete the Formant sign-in in the browser. If the prompt doesn't appear, open Claude Desktop's MCP server settings and reconnect `hacktron`.
 
 To use an API key instead, create an organisation API key with the [authentication guide](/docs/api/authentication#creating-an-api-key). Grant `read` and `write` access if your assistant should triage findings.
 
@@ -94,7 +94,7 @@ Add the server to Cursor's configuration:
 
 After saving, reload Cursor: press `Cmd+Shift+P` and choose **Reload Window**.
 
-When Cursor asks you to authenticate `hacktron`, complete the Hacktron sign-in in the browser. You can also open Cursor's MCP settings, select `hacktron`, and start authentication from there.
+When Cursor asks you to authenticate `hacktron`, complete the Formant sign-in in the browser. You can also open Cursor's MCP settings, select `hacktron`, and start authentication from there.
 
 To use an API key instead, create an organisation API key with the [authentication guide](/docs/api/authentication#creating-an-api-key). Grant `read` and `write` access if your assistant should triage findings.
 
@@ -131,7 +131,7 @@ Then authenticate the connection:
 codex mcp login hacktron
 ```
 
-Complete the Hacktron sign-in in the browser. In an interactive Codex session, type `/mcp` to check the server's connection and authentication status.
+Complete the Formant sign-in in the browser. In an interactive Codex session, type `/mcp` to check the server's connection and authentication status.
 
 To use an API key instead, create an organisation API key with the [authentication guide](/docs/api/authentication#creating-an-api-key). Grant `read` and `write` access if your assistant should triage findings.
 
@@ -169,7 +169,7 @@ Add the server to Antigravity's configuration:
 
 Click **Refresh** in the **MCP Servers** panel to apply the change.
 
-Select `hacktron` in the **MCP Servers** panel and complete the Hacktron sign-in in the browser when asked.
+Select `hacktron` in the **MCP Servers** panel and complete the Formant sign-in in the browser when asked.
 
 :::::
 
@@ -177,7 +177,7 @@ Select `hacktron` in the **MCP Servers** panel and complete the Hacktron sign-in
 
 ## Tools
 
-These tools let your AI assistant work with Hacktron. Each one has a [REST API](/docs/api) endpoint with the same operation and the same permission requirements.
+These tools let your AI assistant work with Formant. Each one has a [REST API](/docs/api) endpoint with the same operation and the same permission requirements.
 
 Viewers can read scans and findings. Members can update findings and prepare pentests. Starting a pentest or changing the Review settings needs an organisation admin.
 
@@ -203,7 +203,7 @@ Viewers can read scans and findings. Members can update findings and prepare pen
 | `request_archive_upload`<br>[`POST /archives/uploads`](/docs/api/archives/request-archive-upload) | Get a URL to upload a code archive to |
 | `create_pentest_draft`<br>[`POST /pentests`](/docs/api/pentests/create-pentest) | Create a draft with code and optional live sites |
 | `update_pentest_draft`<br>[`PATCH /pentests/{id}`](/docs/api/pentests/update-pentest) | Change a pentest that hasn't started |
-| `verify_pentest_login`<br>[`POST /pentests/{id}/login-checks`](/docs/api/pentests/check-pentest-logins) | Check that Hacktron can sign in to each site |
+| `verify_pentest_login`<br>[`POST /pentests/{id}/login-checks`](/docs/api/pentests/check-pentest-logins) | Check that Formant can sign in to each site |
 | `estimate_pentest`<br>[`POST /pentests/{id}/estimate`](/docs/api/pentests/estimate-pentest) | Estimate a draft pentest's credit cost |
 | `get_cost_estimation`<br>[`GET /cost-estimations/{id}`](/docs/api/cost-estimations/get-cost-estimation) | Get a pentest's cost estimate |
 | `get_credit_balance`<br>[`GET /credits`](/docs/api/credits/get-credit-balance) | Read your organisation's Whitebox credit balance |
@@ -219,7 +219,7 @@ Viewers can read scans and findings. Members can update findings and prepare pen
 | `set_pr_reviews`<br>[`POST /repos/pr-reviews`](/docs/api/repos/set-pr-reviews) | Turn PR reviews on or off for repositories (admins only) |
 
 :::warning
-For signed-in testing, your assistant sends the login details to Hacktron, which stores them encrypted. Anything you type in the conversation also goes to your assistant's model provider. Use dedicated test credentials.
+For signed-in testing, your assistant sends the login details to Formant, which stores them encrypted. Anything you type in the conversation also goes to your assistant's model provider. Use dedicated test credentials.
 :::
 
 ## Related
@@ -228,5 +228,5 @@ When you create an API key, you choose its access scopes. The REST API offers th
 
 :::tiles
 - [Authentication](/docs/api/authentication): API keys and authenticated requests.
-- [API overview](/docs/api): Programmatic access to Hacktron.
+- [API overview](/docs/api): Programmatic access to Formant.
 :::

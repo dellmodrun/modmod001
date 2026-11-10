@@ -6,21 +6,21 @@ url: https://www.hacktron.ai/docs/review/findings-feedback
 
 # Findings and feedback
 
-By default, Hacktron posts Review findings where developers already work. Admins can turn this off in [Source control](/docs/platform/organization-settings#source-control).
+By default, Formant posts Review findings where developers already work. Admins can turn this off in [Source control](/docs/platform/organization-settings#source-control).
 
 ## Inline findings
 
-When Hacktron detects a vulnerability in a code change, it posts the finding inline on the GitHub pull request or GitLab merge request.
+When Formant detects a vulnerability in a code change, it posts the finding inline on the GitHub pull request or GitLab merge request.
 
-![Hacktron posts a finding inline on a GitHub pull request](https://www.hacktron.ai/shots/review/findings-feedback/github_findings/light.bbbd8c72.h264.mp4)
+![Formant posts a finding inline on a GitHub pull request](https://www.hacktron.ai/shots/review/findings-feedback/github_findings/light.bbbd8c72.h264.mp4)
 
 :::tip
-A finding can involve code outside the diff, for example when Hacktron finds a vulnerability in a function that code in the diff calls. Hacktron then reports the finding in the affected file, if the pull or merge request changes that file, or in an expandable **Findings outside diff** section.
+A finding can involve code outside the diff, for example when Formant finds a vulnerability in a function that code in the diff calls. Formant then reports the finding in the affected file, if the pull or merge request changes that file, or in an expandable **Findings outside diff** section.
 :::
 
 ## Public repositories
 
-When a repository is public, Hacktron keeps sensitive details of findings outside the diff out of the public pull request thread. For findings outside your changes, the public comment shows the severity counts and links back to Hacktron, but hides titles, descriptions, proof-of-concept details, and affected file locations. Open the finding in Hacktron to see the full details.
+When a repository is public, Formant keeps sensitive details of findings outside the diff out of the public pull request thread. For findings outside your changes, the public comment shows the severity counts and links back to Formant, but hides titles, descriptions, proof-of-concept details, and affected file locations. Open the finding in Formant to see the full details.
 
 ![A pull request comment on a public repository, with the details of a finding outside the changes hidden](https://www.hacktron.ai/shots/review/findings-feedback/public_repository_redacted_findings/light.d4c5876a.webp)
 
@@ -30,7 +30,7 @@ Inline findings on the diff itself stay visible, because they are attached to th
 
 ## Triage comments
 
-Leave triage comments on findings to tell Hacktron whether each one is a false positive, an accepted risk, or a true positive. Every triage comment your team leaves becomes training signal. Over time, Review builds an understanding of your application's attack surface and threat model, so reviews report fewer false positives and more of the bugs that matter to your application.
+Leave triage comments on findings to tell Formant whether each one is a false positive, an accepted risk, or a true positive. Every triage comment your team leaves becomes training signal. Over time, Review builds an understanding of your application's attack surface and threat model, so reviews report fewer false positives and more of the bugs that matter to your application.
 
 ::::tabs
 
@@ -51,7 +51,7 @@ Reply to the finding in GitHub or GitLab with one of these commands:
 
 On the finding page in the web platform, you can change the finding's severity and its state: Open, True Positive, False Positive, Accepted Risk, or Resolved.
 
-When you change the severity or state, you can add a reason. Hacktron records it and uses it to improve future reviews. Setting a finding back to **Open**, as shown here, asks for no reason.
+When you change the severity or state, you can add a reason. Formant records it and uses it to improve future reviews. Setting a finding back to **Open**, as shown here, asks for no reason.
 
 ![Setting a finding's status back to Open](https://www.hacktron.ai/shots/review/findings-feedback/triage_comment/light.0f4772cd.h264.mp4)
 
@@ -59,7 +59,7 @@ When you change the severity or state, you can add a reason. Hacktron records it
 
 :::tab[Slack]
 
-When Hacktron's Slack app posts a finding in your configured channel, you can leave a triage comment that marks the finding as a false positive or an accepted risk, or you can mark the finding as valid. Open the finding card and click **Mark Valid** or **Triage Comment**.
+When Formant's Slack app posts a finding in your configured channel, you can leave a triage comment that marks the finding as a false positive or an accepted risk, or you can mark the finding as valid. Open the finding card and click **Mark Valid** or **Triage Comment**.
 
 ![A Triage Comment dialog in Slack, with a status and a comment for the finding](https://www.hacktron.ai/shots/review/findings-feedback/slack_triage_comment/light.eaa7ce42.webp)
 
@@ -69,7 +69,7 @@ When Hacktron's Slack app posts a finding in your configured channel, you can le
 
 ## Duplicate findings
 
-When Hacktron posts a new finding, it checks whether the finding duplicates one it posted before. For example, if a pull request containing a vulnerability is merged, Hacktron may automatically mark a new finding from a later pull request as a duplicate.
+When Formant posts a new finding, it checks whether the finding duplicates one it posted before. For example, if a pull request containing a vulnerability is merged, Formant may automatically mark a new finding from a later pull request as a duplicate.
 
 ![A finding marked as a duplicate of an earlier finding](https://www.hacktron.ai/shots/review/findings-feedback/duplicate_finding/light.dde613eb.webp)
 
@@ -87,17 +87,17 @@ For example, with the gate set to fail on high severity findings, triaging a hig
 
 ## Remediate a finding
 
-Hacktron can also fix a finding for you. Select **Remediate** on a finding in the web platform, and a Hacktron agent writes a fix and opens a pull or merge request with it. You can also remediate qualifying findings automatically with [Automations](/docs/platform/automations).
+Formant can also fix a finding for you. Select **Remediate** on a finding in the web platform, and a Formant agent writes a fix and opens a pull or merge request with it. You can also remediate qualifying findings automatically with [Automations](/docs/platform/automations).
 
 [Remediation](/docs/platform/automations/remediation) covers how runs work, where the fix lands, and billing.
 
 ## Feedback loop
 
-Triage feedback helps Hacktron adapt to your codebase. Comments and project rules tell Hacktron what is urgent, trusted, irrelevant, or intentionally ignored in a specific repository.
+Triage feedback helps Formant adapt to your codebase. Comments and project rules tell Formant what is urgent, trusted, irrelevant, or intentionally ignored in a specific repository.
 
-When a later commit fixes a finding, Hacktron can recognise the remediation and close stale alerts automatically.
+When a later commit fixes a finding, Formant can recognise the remediation and close stale alerts automatically.
 
-![Hacktron closes a finding after a later commit fixes it](https://www.hacktron.ai/shots/review/findings-feedback/auto_resolve/light.fb5b84e9.h264.mp4)
+![Formant closes a finding after a later commit fixes it](https://www.hacktron.ai/shots/review/findings-feedback/auto_resolve/light.fb5b84e9.h264.mp4)
 
 ## Related setup
 

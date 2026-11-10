@@ -8,7 +8,7 @@ url: https://www.hacktron.ai/docs/platform/context/applications
 
 An **application** is a group of related repositories that form one product boundary, for example a web frontend, backend microservices, and infrastructure repositories that interact as parts of the same product.
 
-When you create an application, Hacktron can build a threat model for the whole application and use it to reason about the application's repositories when it reviews code or runs a Whitebox pentest.
+When you create an application, Formant can build a threat model for the whole application and use it to reason about the application's repositories when it reviews code or runs a Whitebox pentest.
 
 ## Prerequisites
 
@@ -21,7 +21,7 @@ When you create an application, Hacktron can build a threat model for the whole 
 
 ### Open Context
 
-In Hacktron, go to **Context** and select the **Applications** tab.
+In Formant, go to **Context** and select the **Applications** tab.
 
 ### Create the application
 
@@ -61,7 +61,7 @@ Don't use one application as a catch-all for unrelated products. Broad groupings
 
 In **Context**, select the **Applications** tab and open an application to see its member repositories. Use **Edit Application** to rename it or change which repositories belong to it.
 
-A repository you remove from an application stays connected to Hacktron. You can still manage it from **Repositories** and from the **Repositories** tab in **Context**.
+A repository you remove from an application stays connected to Formant. You can still manage it from **Repositories** and from the **Repositories** tab in **Context**.
 
 To delete the application, select **Edit Application**, then **Delete application**.
 
@@ -80,6 +80,6 @@ For details that apply to one repository only, attach the document to that repos
 Connect and enable repositories before you group them into applications.
 
 :::tiles
-- [Threat models](/docs/platform/context/threat-models): How Hacktron builds threat models.
+- [Threat models](/docs/platform/context/threat-models): How Formant builds threat models.
 - [Repositories](/docs/platform/repositories): Choose the repositories to review.
 :::

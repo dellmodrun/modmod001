@@ -1,14 +1,14 @@
 ---
 title: API overview
-description: Programmatic access to Hacktron.
+description: Programmatic access to Formant.
 url: https://www.hacktron.ai/docs/api
 ---
 
 # API overview
 
-The Hacktron REST API starts Whitebox pentests, browses and triages findings, and runs cost estimations from your own tooling.
+The Formant REST API starts Whitebox pentests, browses and triages findings, and runs cost estimations from your own tooling.
 
-Everything a scan operator or reviewer can do in the Hacktron dashboard is available through the API, scoped to one organisation per key.
+Everything a scan operator or reviewer can do in the Formant dashboard is available through the API, scoped to one organisation per key.
 
 ## Base URL
 
@@ -24,7 +24,7 @@ A Swagger UI rendered from the live OpenAPI spec is at [api.hacktron.ai/docs](ht
 
 ## Requirements
 
-- a Hacktron organisation where you have the **Admin** or **Owner** role, which you need to create API keys
+- a Formant organisation where you have the **Admin** or **Owner** role, which you need to create API keys
 - an API key, created as [Authentication](/docs/api/authentication) describes
 - an HTTP client that can set custom headers
 

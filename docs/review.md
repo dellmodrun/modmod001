@@ -6,7 +6,7 @@ url: https://www.hacktron.ai/docs/review
 
 # Review
 
-Review checks the pull requests and merge requests in the repositories you enable. Hacktron reads each change with the repository's context and looks for exploitable vulnerabilities. By default, it comments on the affected code, so engineers can fix issues before merge.
+Review checks the pull requests and merge requests in the repositories you enable. Formant reads each change with the repository's context and looks for exploitable vulnerabilities. By default, it comments on the affected code, so engineers can fix issues before merge.
 
 Use Review for continuous security coverage of day-to-day development. For a broader, scoped assessment of a repository or application, use [Whitebox](/docs/whitebox).
 
@@ -44,6 +44,6 @@ Set Review up in this order: enable repositories and branches in Setup, connect 
 
 ## Scan limits
 
-Each pull or merge request scan covers up to 500 changed files. Hacktron skips larger pull and merge requests.
+Each pull or merge request scan covers up to 500 changed files. Formant skips larger pull and merge requests.
 
 [Enable reviews on every pull and merge request](/docs/review/setup#configure-review) so smaller changes are reviewed before they reach a large deployment pull request.

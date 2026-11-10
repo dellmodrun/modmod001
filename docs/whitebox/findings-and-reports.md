@@ -37,7 +37,7 @@ On the scan page, open **Download report** and choose one of:
 - **Full Whitebox Report**, the detailed assessment and findings, with technical evidence and recommendations
 - **Executive Report**, a shorter report with the risk assessment, key findings, and next steps
 
-Both are PDFs. The Executive Report is available for completed scans with findings. If Hacktron still has to prepare its summary, the PDF downloads once it is ready.
+Both are PDFs. The Executive Report is available for completed scans with findings. If Formant still has to prepare its summary, the PDF downloads once it is ready.
 
 ### Example report
 
@@ -47,7 +47,7 @@ The contents page of the Full Whitebox Report links to each section and finding.
 
 ## Reports after a retest
 
-After Hacktron completes a [retest](/docs/whitebox/retests), **Download report** has two groups:
+After Formant completes a [retest](/docs/whitebox/retests), **Download report** has two groups:
 
 - **Original scan**, the report as delivered before the retest
 - **After retest**, the updated report with the verification results

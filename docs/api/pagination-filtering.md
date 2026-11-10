@@ -6,7 +6,7 @@ url: https://www.hacktron.ai/docs/api/pagination-filtering
 
 # Pagination, filtering, and sorting
 
-The list endpoints in the Hacktron REST API share one set of query parameters for pagination, sorting, and filtering.
+The list endpoints in the Formant REST API share one set of query parameters for pagination, sorting, and filtering.
 
 ## Pagination
 

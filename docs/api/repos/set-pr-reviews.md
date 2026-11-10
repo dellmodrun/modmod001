@@ -8,8 +8,8 @@ url: https://www.hacktron.ai/docs/api/repos/set-pr-reviews
 
 Turns automatic pull and merge request reviews on for the repositories in `enable` and off for the repositories in `disable`. Use repository IDs from [`GET /repos`](/docs/api/repos/list-repos), for any supported provider. Each list holds up to 100 IDs per request. Only organisation admins can call it.
 
-- Before you turn reviews on for a repository, give Hacktron access to it from **Repositories** in Hacktron.
-- If one repository fails, Hacktron carries on with the others. The response counts the repositories that changed in `processed` and lists each failure with its reason in `failedRepositories`.
+- Before you turn reviews on for a repository, give Formant access to it from **Repositories** in Formant.
+- If one repository fails, Formant carries on with the others. The response counts the repositories that changed in `processed` and lists each failure with its reason in `failedRepositories`.
 - `webhookPending` lists the enabled repositories whose provider webhook is still waiting to be registered. Reviews begin once the webhook is registered.
 
 ## Request

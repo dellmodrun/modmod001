@@ -15,7 +15,7 @@ Returns a signed URL for uploading a `.zip`, `.7z`, or `.tar.gz` source archive,
 To pentest part of the archive, set `include_paths` or `exclude_paths` on its entry in `repos`. You can use the same uploaded archive.
 
 :::note
-Some self-hosted deployments return `400` because they don't support API uploads. In that case, upload the archive through the Hacktron web app.
+Some self-hosted deployments return `400` because they don't support API uploads. In that case, upload the archive through the Formant web app.
 :::
 
 ## Request

@@ -6,7 +6,7 @@ url: https://www.hacktron.ai/docs/platform/billing
 
 # Billing
 
-Hacktron bills each product separately. Review runs on seats, with a 14-day free trial. Whitebox and Automations each use their own organisation-wide credit account.
+Formant bills each product separately. Review runs on seats, with a 14-day free trial. Whitebox and Automations each use their own organisation-wide credit account.
 
 ## How billing works
 

@@ -14,7 +14,7 @@ Organisation **Admins** create and manage scheduled scans. Runs spend the organi
 
 On **Automations**, select **New automation**, give it a name, and add the repositories or [applications](/docs/platform/context/applications) to scan on the **Environments** tab.
 
-Choose **On a schedule** to run a whitebox scan of each environment at the times you set. Hacktron adds **Start whitebox scan** automatically. Removing the schedule also removes that scan action.
+Choose **On a schedule** to run a whitebox scan of each environment at the times you set. Formant adds **Start whitebox scan** automatically. Removing the schedule also removes that scan action.
 
 ::::steps
 
@@ -64,7 +64,7 @@ Adding an environment without scan settings turns the automation off until you s
 
 Saved login instructions are checked before every scan. If the login fails, that scan doesn't start. To check them straight away, select **Save and check login** on the last step of the scan settings. The result shows on the **Define targets** and **Review details** steps, and the check appears in the [run history](#run-history) as **Login check**.
 
-If authenticated testing isn't enabled for your organisation, Hacktron keeps the login instructions, but scans that need them can't start until it's enabled.
+If authenticated testing isn't enabled for your organisation, Formant keeps the login instructions, but scans that need them can't start until it's enabled.
 
 ## Credits and skipped scans
 

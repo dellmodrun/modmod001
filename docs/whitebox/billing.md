@@ -18,7 +18,7 @@ Whitebox Scan credits are organisation-wide. They are separate from Review seats
 
 ### Calculate the cost
 
-Hacktron calculates the credit cost from the selected repositories and scope. Calculating the cost deducts no credits.
+Formant calculates the credit cost from the selected repositories and scope. Calculating the cost deducts no credits.
 
 ### Start with enough balance
 
@@ -36,7 +36,7 @@ Starting the scan deducts the calculated credits from the organisation's Whitebo
 
 ## Buy credits
 
-Organisation owners can buy Whitebox Scan credits from **Billing** or from the checkout step of a Whitebox Scan when the organisation does not have enough credits. If a member reaches checkout without enough credits, Hacktron asks them to contact an owner to top up the balance.
+Organisation owners can buy Whitebox Scan credits from **Billing** or from the checkout step of a Whitebox Scan when the organisation does not have enough credits. If a member reaches checkout without enough credits, Formant asks them to contact an owner to top up the balance.
 
 Whitebox Scan credits have no auto top-up. Owners buy them manually, and the purchase does not change the organisation's Automation credit balance or its auto top-up settings.
 
@@ -46,7 +46,7 @@ An owner needs a saved payment method before buying credits. With no payment met
 
 ### Open Billing
 
-In the Hacktron dashboard, go to **Billing** and find the Whitebox Scan credit balance.
+In the Formant dashboard, go to **Billing** and find the Whitebox Scan credit balance.
 
 ### Add a payment method
 
@@ -58,7 +58,7 @@ Use **Buy credits** to select the number of credits and review the checkout pric
 
 ### Complete checkout
 
-Complete any card authentication the payment requires. Hacktron adds the credits to the organisation's balance once checkout succeeds.
+Complete any card authentication the payment requires. Formant adds the credits to the organisation's balance once checkout succeeds.
 
 ::::
 
@@ -86,4 +86,4 @@ Each pentest includes one free retest, which deducts no Whitebox Scan credits. [
 
 ## Refunds and cancellations
 
-If a started scan cannot launch after its credits are deducted, Hacktron tries to refund those credits automatically. Failed and stopped scans can show refunded credits in the scan details and the transaction history.
+If a started scan cannot launch after its credits are deducted, Formant tries to refund those credits automatically. Failed and stopped scans can show refunded credits in the scan details and the transaction history.

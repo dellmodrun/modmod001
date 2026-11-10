@@ -12,7 +12,7 @@ Starts a pentest of the repositories attached to a completed or partial cost est
 
 1. Create a cost estimation with [`POST /cost-estimations`](/docs/api/cost-estimations/create-cost-estimation).
 2. Wait until the estimation reaches `completed` or `partial` status and has a positive `total_credits` value.
-3. Submit the same repositories, branches, and path scope that the estimation included, and keep each repository's `include_paths` and `exclude_paths` the same. Hacktron rejects a pentest whose repository, archive, branch, or path scope doesn't match the estimate.
+3. Submit the same repositories, branches, and path scope that the estimation included, and keep each repository's `include_paths` and `exclude_paths` the same. Formant rejects a pentest whose repository, archive, branch, or path scope doesn't match the estimate.
 4. Make sure your organisation has enough Whitebox credits. The dashboard shows them, as [Credits and billing](/docs/whitebox/billing) describes. Insufficient credits return `402 Payment Required`.
 
 :::warning

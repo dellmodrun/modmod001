@@ -12,7 +12,7 @@ url: https://www.hacktron.ai/docs/changelog
 
 **You can close a single finding from its status menu.** **Closed** is in the same places as **False Positive**: the status menu, the keyboard shortcut, and the command palette. Closing one finding no longer needs the bulk-only workaround.
 
-**Attestation letters have their own page.** Your organisation's **Attestation Letters** page lists the letters Hacktron issues, each with a unique shareable link and a PDF download. A customer or auditor with the link can view or download the letter without logging in.
+**Attestation letters have their own page.** Your organisation's **Attestation Letters** page lists the letters Formant issues, each with a unique shareable link and a PDF download. A customer or auditor with the link can view or download the letter without logging in.
 
 **Review accepts pull requests with up to 500 changed files.** The limit was 200, so large refactors and wide migrations fit.
 
@@ -60,7 +60,7 @@ See [listing findings in the API](/docs/api/findings/list-findings), the [Whiteb
 
 **Reports include live validation evidence.** A finding with recorded live-validation evidence has a **Live Validation** section in the PDF report, showing what the attempt established, what it did not establish, and any blocker. A successful exploit attempt can also include the observed output.
 
-**Finding status syncs with Jira and Linear.** Status changes on a finding sync to the linked Jira or Linear issue, and supported issue status changes come back into Hacktron. Organisation admins enable or disable each direction separately in the integration settings. Jira updates follow the transitions available in your project's workflow.
+**Finding status syncs with Jira and Linear.** Status changes on a finding sync to the linked Jira or Linear issue, and supported issue status changes come back into Formant. Organisation admins enable or disable each direction separately in the integration settings. Jira updates follow the transitions available in your project's workflow.
 
 **Integration settings are on one page.** The **Integrations** page lists providers with connection details, repository counts where they apply, and a **Connect** or **Manage** action. Connected providers show a status badge, and a connection that needs attention shows the action that resolves it. Open a provider to manage its settings or disconnect it.
 
@@ -70,21 +70,21 @@ See the [Whitebox quickstart](/docs/whitebox/quickstart), [Jira](/docs/platform/
 
 ## September 25, 2026
 
-**Admins choose GitHub repositories inside Hacktron.** Organisation admins select which repositories to enable from the GitHub integration in Hacktron, within the access granted to the GitHub App. Repositories added back to the App installation are selected again automatically.
+**Admins choose GitHub repositories inside Formant.** Organisation admins select which repositories to enable from the GitHub integration in Formant, within the access granted to the GitHub App. Repositories added back to the App installation are selected again automatically.
 
-**Repository access and pull request reviews are separate.** A repository can stay available to Hacktron while you switch its automatic pull request reviews on or off. The Repositories table shows **Repository** and **Owner** separately, alongside **Open Findings**, **PR Scans**, and **Last Scan**, and its platform filter lists only the providers your organisation has connected.
+**Repository access and pull request reviews are separate.** A repository can stay available to Formant while you switch its automatic pull request reviews on or off. The Repositories table shows **Repository** and **Owner** separately, alongside **Open Findings**, **PR Scans**, and **Last Scan**, and its platform filter lists only the providers your organisation has connected.
 
-**Hacktron replies to explicit review requests.** When you post `@hacktronai review` for a commit that already has a review, Hacktron replies with the completed result or tells you that the review is still in progress.
+**Formant replies to explicit review requests.** When you post `@hacktronai review` for a commit that already has a review, Formant replies with the completed result or tells you that the review is still in progress.
 
-**Appliances can review GitHub.com pull requests.** Self-hosted Hacktron deployments can connect a customer-owned GitHub App and review GitHub.com pull requests on their own infrastructure.
+**Appliances can review GitHub.com pull requests.** Self-hosted Formant deployments can connect a customer-owned GitHub App and review GitHub.com pull requests on their own infrastructure.
 
 See [GitHub](/docs/platform/repositories/github), [Repositories](/docs/platform/repositories), [repository configuration](/docs/review/config), and [on-premises deployments](/docs/platform/on-premises).
 
 ## September 22, 2026
 
-**You can request a retest of specific findings.** On a completed hosted Whitebox pentest, choose **Retest findings**, select the findings to check, and give instructions about your fixes. The Hacktron pentest team reviews the request and records each finding's outcome and notes. Completed retests are in the scan's retest history and its PDF report.
+**You can request a retest of specific findings.** On a completed hosted Whitebox pentest, choose **Retest findings**, select the findings to check, and give instructions about your fixes. The Formant pentest team reviews the request and records each finding's outcome and notes. Completed retests are in the scan's retest history and its PDF report.
 
-**You can preview the login used for dynamic validation.** Where dynamic validation is enabled, add login instructions and test credentials in the Whitebox wizard, then preview the browser session before you start. Hacktron uses those instructions to authenticate against your deployed targets when it validates findings.
+**You can preview the login used for dynamic validation.** Where dynamic validation is enabled, add login instructions and test credentials in the Whitebox wizard, then preview the browser session before you start. Formant uses those instructions to authenticate against your deployed targets when it validates findings.
 
 **The People list searches every member.** Search by name, email, or SCM username, filter by role or Review seat, and sort and page through the results. Search and filters cover the full member list, not only the rows already loaded.
 
@@ -104,7 +104,7 @@ See [preparing scope and access](/docs/whitebox/quickstart#configure-dynamic-tes
 
 **Global search shows each finding's severity.** Findings in global search results carry their severity badge, so you can pick out the Critical and High matches without opening each one.
 
-**Fix pull requests close when the fix lands elsewhere.** If Hacktron detects that a commit on your base branch fixed a finding, it closes any open fix pull request for that finding and leaves a comment saying why, so you don't clear out stale fix pull requests by hand.
+**Fix pull requests close when the fix lands elsewhere.** If Formant detects that a commit on your base branch fixed a finding, it closes any open fix pull request for that finding and leaves a comment saying why, so you don't clear out stale fix pull requests by hand.
 
 **Fix pull requests retry instead of failing on a stale diff.** If a file changes on the base branch while Remediation generates a fix, the fix no longer applies cleanly. Instead of a patch error, the automation re-runs against the updated file, up to three retries per chain.
 
@@ -138,7 +138,7 @@ See [findings and feedback](/docs/review/findings-feedback), [Remediation](/docs
 
 **Billing separates Automation credits from Whitebox credits.** Billing shows separate accounts for **Automation credits** and **Whitebox Scan Credits**. Each account has its own balance, current-period usage, purchase flow, and history. Auto top-up is available for Automation credits only.
 
-**Members can connect a Microsoft account.** From **Personal settings**, connect the Microsoft account you use for Azure DevOps. When its email matches the pull request author's Azure DevOps UPN, Hacktron can attribute later pull request activity to the correct member and Review seat.
+**Members can connect a Microsoft account.** From **Personal settings**, connect the Microsoft account you use for Azure DevOps. When its email matches the pull request author's Azure DevOps UPN, Formant can attribute later pull request activity to the correct member and Review seat.
 
 **On-premises Whitebox pentests accept more sources.** When starting a Whitebox pentest, on-premises deployments can select enabled GitHub Enterprise Server repositories or upload `.zip`, `.7z`, `.tar.gz`, and `.tgz` source archives.
 
@@ -152,7 +152,7 @@ See [billing and plans](/docs/platform/billing), [connecting your Microsoft acco
 
 ## August 3, 2026
 
-**Review supports Azure DevOps.** Connect your Azure DevOps organisation with a personal access token, and Hacktron reviews pull requests automatically, assigns developer seats, and reports findings, as it does on GitHub and GitLab.
+**Review supports Azure DevOps.** Connect your Azure DevOps organisation with a personal access token, and Formant reviews pull requests automatically, assigns developer seats, and reports findings, as it does on GitHub and GitLab.
 
 **You can triage findings in bulk.** Select any number of findings with checkboxes, then change their status or severity in one action. When a full page is selected, you can extend the action to every finding that matches your current filters across all pages.
 
@@ -170,7 +170,7 @@ See [billing and plans](/docs/platform/billing), [connecting your Microsoft acco
 
 **The usage page has a tab per product.** Its **PR Reviews**, **Automations**, and **Whitebox** tabs each have their own credit and usage breakdown.
 
-**Review covers bot pull requests on GitHub.** Hacktron reviews eligible bot pull requests when the source branch belongs to the same repository. Bot pull requests from forks and pull requests from outside human contributors are not scanned automatically. Use author filters to exclude specific bot accounts.
+**Review covers bot pull requests on GitHub.** Formant reviews eligible bot pull requests when the source branch belongs to the same repository. Bot pull requests from forks and pull requests from outside human contributors are not scanned automatically. Use author filters to exclude specific bot accounts.
 
 **Author filters in configuration and organisation settings accept glob patterns.** Author include and exclude filters in `.hacktron/config.yaml` and organisation scan settings accept `*`, `**`, `?`, and `{a,b}` patterns as well as exact names.
 
@@ -188,7 +188,7 @@ See [Azure DevOps](/docs/platform/repositories/azure-devops), [Automations](/doc
 
 **The API exports findings.** [`GET /rest/findings/export`](/docs/api/findings/export-findings) returns findings as CSV, JSON, or SARIF, with the same filter options as the UI, including scoping by repository.
 
-**Review scans Bitbucket pull requests.** Connect a Bitbucket workspace and Hacktron scans pull requests automatically, as it does for GitHub and GitLab.
+**Review scans Bitbucket pull requests.** Connect a Bitbucket workspace and Formant scans pull requests automatically, as it does for GitHub and GitLab.
 
 **Whitebox pentests offer a choice of model tier.** When starting a pentest, choose the **Default** or **Legacy** model tier before you commit to a cost estimate.
 
@@ -202,13 +202,13 @@ See the [findings API](/docs/api/findings/list-findings), [GitLab](/docs/platfor
 
 ## June 23, 2026
 
-**The Context page collects what Hacktron knows about your code.** It has **Repositories** and **Applications** tabs. Cards are sorted by most recent threat-model update and show a badge for each model's status. Click a card to open its threat model.
+**The Context page collects what Formant knows about your code.** It has **Repositories** and **Applications** tabs. Cards are sorted by most recent threat-model update and show a badge for each model's status. Click a card to open its threat model.
 
-**Repositories can be grouped into applications.** Hacktron synthesises an application-level threat model by merging the threat models of the member repositories. You can scan an application as a single target, so findings are grounded in the combined model, and context documents you upload to the application are folded into it.
+**Repositories can be grouped into applications.** Formant synthesises an application-level threat model by merging the threat models of the member repositories. You can scan an application as a single target, so findings are grounded in the combined model, and context documents you upload to the application are folded into it.
 
 **Threat models open in a reading view and can be edited.** Repository and application threat models open inline with a file tree and outline. Your edits are preserved across regenerations.
 
-**Findings are redacted on public pull requests.** For public repositories, the pull request review comment leaves out full titles, descriptions, proof-of-concept code, and file locations for findings outside the changed lines. It shows a count and a link back to Hacktron, so sensitive details stay out of the public thread. Private and internal repositories are unchanged, and inline comments on the diff itself are unaffected.
+**Findings are redacted on public pull requests.** For public repositories, the pull request review comment leaves out full titles, descriptions, proof-of-concept code, and file locations for findings outside the changed lines. It shows a count and a link back to Formant, so sensitive details stay out of the public thread. Private and internal repositories are unchanged, and inline comments on the diff itself are unaffected.
 
 **Organisations can set a default fail-on severity.** Organisation admins can set a default severity threshold for pull request and merge request checks in settings. A repository's own configuration takes precedence when set.
 
@@ -234,7 +234,7 @@ See [GitHub and GitLab](/docs/review/integrations/github-gitlab).
 
 **Accounts support multi-factor authentication.** Secure your account with MFA requirements and additional verification steps. Admins can enforce MFA across their organisation.
 
-**A remote MCP server gives access to triage.** External tools and scripts connect to Hacktron's finding-triage tools through a remote MCP server endpoint, with OAuth and API key authentication.
+**A remote MCP server gives access to triage.** External tools and scripts connect to Formant's finding-triage tools through a remote MCP server endpoint, with OAuth and API key authentication.
 
 **Repository configuration can exclude scans.** Use `.hacktron/config.yaml` to exclude pull request scans by file pattern, keywords in titles, or labels.
 
@@ -256,7 +256,7 @@ See [GitLab](/docs/platform/repositories/gitlab).
 
 **Findings on abandoned pull requests close themselves.** Close a pull or merge request without merging and its findings move to a **Closed** state. Reopen it and they come back, and anything you already triaged keeps its triage.
 
-**Cost estimation flags unsupported languages up front.** It tells you when a repository is mostly in a language Hacktron cannot scan yet, instead of failing with no explanation.
+**Cost estimation flags unsupported languages up front.** It tells you when a repository is mostly in a language Formant cannot scan yet, instead of failing with no explanation.
 
 **The Connect GitLab dialog walks through Service Accounts.** It takes you through GitLab's group Service Accounts step by step and has a **GitLab.com** and **Self-hosted** toggle that matches the GitHub Enterprise setup.
 
@@ -264,7 +264,7 @@ See [Slack](/docs/platform/communication-apps/slack) and [starting a free trial]
 
 ## June 7, 2026
 
-**Hacktron supports self-hosted GitHub Enterprise Server.** Point Hacktron at GitHub Enterprise Server for Whitebox pentests and pull request reviews, and run several Enterprise hosts next to github.com at the same time.
+**Formant supports self-hosted GitHub Enterprise Server.** Point Formant at GitHub Enterprise Server for Whitebox pentests and pull request reviews, and run several Enterprise hosts next to github.com at the same time.
 
 **GitLab merge request feedback matches GitHub.** Merge request comments carry severity badges, a collapsible proof of concept, trace diagrams, and a **Fix with AI** block. Trigger a review with `@hacktronai review`. Triage shows up the same across the web app, Slack, and the merge request thread.
 
@@ -308,7 +308,7 @@ See [Whitebox](/docs/whitebox).
 
 ## May 26, 2026
 
-**Hacktron detects duplicates across findings.** When a new finding repeats one Hacktron already reported, it links the two, so pull request comments point back to the original instead of saying the same thing twice.
+**Formant detects duplicates across findings.** When a new finding repeats one Formant already reported, it links the two, so pull request comments point back to the original instead of saying the same thing twice.
 
 ## May 19, 2026
 
@@ -336,7 +336,7 @@ See [usage and overage billing](/docs/review/usage).
 
 **Cancelled organisations can resubscribe in one click.** A **Resubscribe** button picks their old plan back up.
 
-**You can invite teammates from Slack.** Invite teammates to your Hacktron organisation from Slack.
+**You can invite teammates from Slack.** Invite teammates to your Formant organisation from Slack.
 
 See [usage and overage billing](/docs/review/usage) and [inviting your team on Slack](/docs/platform/communication-apps/slack).
 
@@ -350,7 +350,7 @@ See [setting up Review](/docs/review/setup).
 
 ## April 23, 2026
 
-**Review findings have their own page.** The **Code Review** page shows scan-scoped findings, and pull request comments link back to the finding in Hacktron.
+**Review findings have their own page.** The **Code Review** page shows scan-scoped findings, and pull request comments link back to the finding in Formant.
 
 **Affected code is syntax-highlighted.** Code in the finding view is syntax-highlighted, which makes vulnerable snippets easier to read.
 
@@ -358,7 +358,7 @@ See [Review](/docs/review).
 
 ## April 20, 2026
 
-**Hacktron has a public REST API.** Reach your scans, findings, and repositories programmatically with API keys, documented in interactive API docs.
+**Formant has a public REST API.** Reach your scans, findings, and repositories programmatically with API keys, documented in interactive API docs.
 
 **Slack unfurls finding and scan links.** The links unfurl with live status, severity, and triage, so your team stays in sync without leaving the channel.
 

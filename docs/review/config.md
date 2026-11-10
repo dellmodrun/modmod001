@@ -10,7 +10,7 @@ A `.hacktron/config.yaml` file in your repository controls how Review treats its
 
 - exclude specific pull and merge requests, so they aren't scanned
 - include only specific pull and merge requests in scanning
-- fail the Hacktron check when a finding meets a severity threshold, so risky changes can't merge
+- fail the Formant check when a finding meets a severity threshold, so risky changes can't merge
 
 [`.hacktron/rules.md`](/docs/review/rules) is separate: it shapes the quality of a review. `config.yaml` decides whether a pull request is scanned and whether its check passes.
 
@@ -40,10 +40,10 @@ packages/
 package.json
 ```
 
-Hacktron accepts either `.hacktron/config.yaml` or `.hacktron/config.yml`. If both exist, it uses `.yaml`.
+Formant accepts either `.hacktron/config.yaml` or `.hacktron/config.yml`. If both exist, it uses `.yaml`.
 
 :::warning
-Hacktron always reads `config.yaml` from the repository's default branch (for example `main`), never from the pull or merge request being scanned, so a pull request can't change its own scanning rules. Commit `config.yaml` to the default branch for it to take effect.
+Formant always reads `config.yaml` from the repository's default branch (for example `main`), never from the pull or merge request being scanned, so a pull request can't change its own scanning rules. Commit `config.yaml` to the default branch for it to take effect.
 :::
 
 ## Example
@@ -61,22 +61,22 @@ exclude:
   authors:
     - dependabot[bot]
 
-# Fail the Hacktron check when a finding is at or above this severity.
+# Fail the Formant check when a finding is at or above this severity.
 fail_on:
   severity: high
 ```
 
-Every key is optional. An empty or missing `config.yaml` doesn't turn filtering off, because the organisation's filters still apply (see [configuration hierarchy](#configuration-hierarchy)). With no repository or organisation filters set, Hacktron scans every covered pull request, and the check stays green unless the scan itself fails with an error.
+Every key is optional. An empty or missing `config.yaml` doesn't turn filtering off, because the organisation's filters still apply (see [configuration hierarchy](#configuration-hierarchy)). With no repository or organisation filters set, Formant scans every covered pull request, and the check stays green unless the scan itself fails with an error.
 
 ## Exclude scans
 
-The `exclude` block tells Hacktron not to scan a pull or merge request. A match records a skipped check and uses no developer seat.
+The `exclude` block tells Formant not to scan a pull or merge request. A match records a skipped check and uses no developer seat.
 
 :::note
-Hacktron reviews changes from a bot automatically only when the provider identifies the bot as trusted for the target repository. Untrusted bots and outside contributors aren't scanned automatically. Eligible bots follow the same filters and seat rules as other authors. Add a bot's username to `exclude.authors` to skip its future changes.
+Formant reviews changes from a bot automatically only when the provider identifies the bot as trusted for the target repository. Untrusted bots and outside contributors aren't scanned automatically. Eligible bots follow the same filters and seat rules as other authors. Add a bot's username to `exclude.authors` to skip its future changes.
 :::
 
-Hacktron checks the rules in this order, and the first match applies:
+Formant checks the rules in this order, and the first match applies:
 
 | Key | Matches when | Match style |
 | --- | --- | --- |
@@ -131,7 +131,7 @@ The same limits apply to repository and organisation settings:
 - up to five `*` characters in each pattern
 - up to 10 comma-separated alternatives in one brace expression
 
-If a repository pattern goes over these limits, Hacktron treats the repository's configuration as invalid and scans with the [fail-open behaviour](#how-invalid-configuration-is-handled) described below.
+If a repository pattern goes over these limits, Formant treats the repository's configuration as invalid and scans with the [fail-open behaviour](#how-invalid-configuration-is-handled) described below.
 
 ### Matching nested branches with `*` and `**`
 
@@ -149,7 +149,7 @@ Combine `exclude` and `include` to leave out a subtree: `include.branches: ["rel
 
 ## Include scans
 
-The `include` block scans only the pull and merge requests that match its rules. On the ones it doesn't scan, Hacktron records a skipped check and, if [comments to source control](/docs/platform/organization-settings#post-comments-to-source-control) are on, posts a skip comment.
+The `include` block scans only the pull and merge requests that match its rules. On the ones it doesn't scan, Formant records a skipped check and, if [comments to source control](/docs/platform/organization-settings#post-comments-to-source-control) are on, posts a skip comment.
 
 ```yaml title=".hacktron/config.yaml"
 include:
@@ -182,9 +182,9 @@ Within a category, any value matches: `include.labels: [feature, bugfix]` matche
 
 ## Fail the check on findings
 
-By default, the Hacktron check is green as long as the scan completes, and findings are posted as inline comments that don't block the merge. Set a severity threshold to turn the check red when a finding is at or above that level.
+By default, the Formant check is green as long as the scan completes, and findings are posted as inline comments that don't block the merge. Set a severity threshold to turn the check red when a finding is at or above that level.
 
-![A pull request whose Hacktron check failed on a finding](https://www.hacktron.ai/shots/review/config/fail_on_failure_example/light.b312ebca.webp)
+![A pull request whose Formant check failed on a finding](https://www.hacktron.ai/shots/review/config/fail_on_failure_example/light.b312ebca.webp)
 
 The threshold is inclusive: `high` fails the check on `high` and `critical` findings, while `critical` fails it only on `critical` ones.
 
@@ -219,11 +219,11 @@ fail_on:
 
 ## How invalid configuration is handled
 
-Hacktron is **fail-open** about configuration:
+Formant is **fail-open** about configuration:
 
-- A missing, empty, or malformed `config.yaml` is ignored. Hacktron scans normally and the check stays green.
+- A missing, empty, or malformed `config.yaml` is ignored. Formant scans normally and the check stays green.
 - Unknown keys are ignored, so a configuration can carry settings for future features without breaking today's scans.
-- A value of the wrong type on a known key, such as `fail_on.severity: 7`, makes Hacktron ignore the whole file. Keep values in the shapes shown above.
+- A value of the wrong type on a known key, such as `fail_on.severity: 7`, makes Formant ignore the whole file. Keep values in the shapes shown above.
 
 ## FAQ
 

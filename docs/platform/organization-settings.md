@@ -12,7 +12,7 @@ To open them, select your organisation, then go to **Settings**.
 
 ## Scan filters
 
-Scan filters choose which pull and merge requests Hacktron scans by default. They come in four categories: branches, labels, authors, and keywords.
+Scan filters choose which pull and merge requests Formant scans by default. They come in four categories: branches, labels, authors, and keywords.
 
 ::::steps
 
@@ -45,7 +45,7 @@ For control over a single repository, override any category in `.hacktron/config
 
 ## Check gate
 
-The check gate is an organisation-wide severity. When a finding on a pull or merge request meets or exceeds it, the Hacktron check fails. To block the merge as well, make the Hacktron check required in your source control's branch protection.
+The check gate is an organisation-wide severity. When a finding on a pull or merge request meets or exceeds it, the Formant check fails. To block the merge as well, make the Formant check required in your source control's branch protection.
 
 ::::steps
 
@@ -65,7 +65,7 @@ Pick a severity: **Critical**, **High**, **Medium**, or **Low**. Select **Off** 
 
 ## Source control
 
-These settings decide what Hacktron writes to your pull and merge requests. They apply to every repository in your organisation, and only organisation admins and owners can change them.
+These settings decide what Formant writes to your pull and merge requests. They apply to every repository in your organisation, and only organisation admins and owners can change them.
 
 To change them, open **Source control** in **Settings**.
 
@@ -75,9 +75,9 @@ To keep scans quiet, turn off both **Update check statuses in source control** a
 
 ### Update check statuses in source control
 
-**Update check statuses in source control** shows scan progress and results as checks on your pull and merge requests. Turning it off leaves the checks Hacktron has already created in place.
+**Update check statuses in source control** shows scan progress and results as checks on your pull and merge requests. Turning it off leaves the checks Formant has already created in place.
 
-If your branch protection requires a Hacktron check, remove that requirement before you turn this off.
+If your branch protection requires a Formant check, remove that requirement before you turn this off.
 
 ### Post comments to source control
 
@@ -87,10 +87,10 @@ With comments off:
 
 - Scans run as normal.
 - Check statuses follow **Update check statuses in source control**, and can still block a merge.
-- Findings are available in Hacktron and in connected tools such as Slack, Jira, and Linear.
-- Hacktron posts no findings, summaries, or other comments to the pull or merge request.
+- Findings are available in Formant and in connected tools such as Slack, Jira, and Linear.
+- Formant posts no findings, summaries, or other comments to the pull or merge request.
 
-Turning comments off doesn't remove the comments Hacktron has already posted.
+Turning comments off doesn't remove the comments Formant has already posted.
 
 ### Post system comments
 
@@ -98,7 +98,7 @@ Turning comments off doesn't remove the comments Hacktron has already posted.
 
 Turn it off to silence these notices. Finding comments and check statuses are not affected.
 
-While **Post comments to source control** is off, this option shows as off and can't be changed. Hacktron keeps your selection for when comments are turned back on.
+While **Post comments to source control** is off, this option shows as off and can't be changed. Formant keeps your selection for when comments are turned back on.
 
 ## SLA thresholds
 

@@ -6,7 +6,7 @@ url: https://www.hacktron.ai/docs/platform/automations
 
 # Automations
 
-An automation acts for you. It has one trigger: **New vulnerability found**, for new findings that match the rules you set, or [**On a schedule**](/docs/platform/automations/scheduled-whitebox-scans), for the times you set. When the trigger fires, Hacktron runs the automation's **action**.
+An automation acts for you. It has one trigger: **New vulnerability found**, for new findings that match the rules you set, or [**On a schedule**](/docs/platform/automations/scheduled-whitebox-scans), for the times you set. When the trigger fires, Formant runs the automation's **action**.
 
 :::tip
 Each trigger has its own action. **New vulnerability found** runs **Apply Remediation**, which starts a [remediation](/docs/platform/automations/remediation) run that fixes the finding. **On a schedule** runs [**Start whitebox scan**](/docs/platform/automations/scheduled-whitebox-scans), which scans each environment.
@@ -50,15 +50,15 @@ Select **Save changes**. An automation needs at least one environment, one trigg
 
 ## When an automation fires
 
-An automation with **New vulnerability found** fires when a new finding matches its severity rule and environment, including any branch limits, and the automation is enabled. **Apply Remediation** then starts a remediation run, which uses [automation credits](/docs/platform/automations/credits). After the action, Hacktron sends a notification.
+An automation with **New vulnerability found** fires when a new finding matches its severity rule and environment, including any branch limits, and the automation is enabled. **Apply Remediation** then starts a remediation run, which uses [automation credits](/docs/platform/automations/credits). After the action, Formant sends a notification.
 
 Each finding is fixed at most once. A finding that already has a remediation run doesn't fire automations again.
 
 ### Notifications
 
-In Slack, Hacktron posts a message to your channel with a link to the finding. The Hacktron bot joins public channels on its own. For a private channel, invite the bot first.
+In Slack, Formant posts a message to your channel with a link to the finding. The Formant bot joins public channels on its own. For a private channel, invite the bot first.
 
-By email, Hacktron writes to the recipients you chose from your organisation's members.
+By email, Formant writes to the recipients you chose from your organisation's members.
 
 Notifications are best-effort. If one fails to send, the remediation run goes ahead.
 

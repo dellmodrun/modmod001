@@ -6,7 +6,7 @@ url: https://www.hacktron.ai/docs/platform/security-settings
 
 # Security settings
 
-**Security settings** holds the authentication controls for your Hacktron organisation. They apply to every member of the organisation, not only to your own account.
+**Security settings** holds the authentication controls for your Formant organisation. They apply to every member of the organisation, not only to your own account.
 
 :::tip
 To set up MFA for your own account, use [Personal settings](/docs/platform/account-settings#multi-factor-authentication-mfa).
@@ -14,7 +14,7 @@ To set up MFA for your own account, use [Personal settings](/docs/platform/accou
 
 ## Require MFA for members
 
-Organisation admins and owners can require MFA for every member of a Hacktron organisation. Once it is required, a member who has not set up MFA must complete setup before they can keep using that organisation.
+Organisation admins and owners can require MFA for every member of a Formant organisation. Once it is required, a member who has not set up MFA must complete setup before they can keep using that organisation.
 
 ::::steps
 
@@ -28,7 +28,7 @@ In **Security**, find **Require MFA for members**.
 
 ### Turn on required MFA
 
-Turn on **Require MFA for members**. Hacktron applies the requirement to the current organisation.
+Turn on **Require MFA for members**. Formant applies the requirement to the current organisation.
 
 :::note
 Members who have not set up MFA are asked to complete setup the next time they open the organisation.
@@ -38,13 +38,13 @@ Members who have not set up MFA are asked to complete setup the next time they o
 
 ## Enterprise SSO
 
-Hacktron supports Enterprise SSO through SAML.
+Formant supports Enterprise SSO through SAML.
 
 :::warning
-The first time you set up SAML SSO, contact Hacktron at [hello@hacktron.ai](mailto:hello@hacktron.ai).
+The first time you set up SAML SSO, contact Formant at [hello@hacktron.ai](mailto:hello@hacktron.ai).
 :::
 
-Once Hacktron has set up SSO for your organisation, you can sign in through your identity provider.
+Once Formant has set up SSO for your organisation, you can sign in through your identity provider.
 
 ::::steps
 
@@ -58,10 +58,10 @@ Enter your work email address on the domain connected to your SAML identity prov
 
 ### Authenticate with your IdP
 
-Hacktron redirects you to the SAML identity provider configured for that email domain.
+Formant redirects you to the SAML identity provider configured for that email domain.
 
-### Return to Hacktron
+### Return to Formant
 
-After you authenticate, you return to Hacktron and continue to the page you were signing in to.
+After you authenticate, you return to Formant and continue to the page you were signing in to.
 
 ::::

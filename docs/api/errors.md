@@ -6,7 +6,7 @@ url: https://www.hacktron.ai/docs/api/errors
 
 # Errors
 
-The Hacktron REST API reports success and failure with standard HTTP status codes.
+The Formant REST API reports success and failure with standard HTTP status codes.
 
 ## Status codes
 
@@ -69,7 +69,7 @@ The organisation doesn't have enough Whitebox credits for the requested scan. To
 
 ### "cost_estimation_id is required for pentest scans"
 
-Inputs that only Whitebox pentests use, such as `target_urls`, `auth_instructions`, `custom_context`, or `context_document_ids`, need a cost estimation so that Hacktron deducts the right number of credits. Create a cost estimation first, then pass its `id` as `cost_estimation_id`.
+Inputs that only Whitebox pentests use, such as `target_urls`, `auth_instructions`, `custom_context`, or `context_document_ids`, need a cost estimation so that Formant deducts the right number of credits. Create a cost estimation first, then pass its `id` as `cost_estimation_id`.
 
 ### "Cost estimation is not ready"
 
@@ -85,4 +85,4 @@ The repository URL matches the estimate but the branch doesn't. Start the scan o
 
 ### "Finding not found"
 
-The finding doesn't exist, hasn't reached the approved verification state yet, or belongs to another organisation. Hacktron returns the same response in all three cases, so it doesn't leak information across tenants.
+The finding doesn't exist, hasn't reached the approved verification state yet, or belongs to another organisation. Formant returns the same response in all three cases, so it doesn't leak information across tenants.

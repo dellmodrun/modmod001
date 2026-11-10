@@ -39,4 +39,4 @@ const server=http.createServer(async(request,response)=>{
     fs.createReadStream(file).pipe(response);
   }catch(error){response.writeHead(500,{"content-type":"text/plain; charset=utf-8"});response.end(String(error?.message||error))}
 });
-server.listen(port,"127.0.0.1",()=>console.log(`Hacktron local mirror: http://127.0.0.1:${port}/`));
+server.listen(port,"127.0.0.1",()=>console.log(`Formant local mirror: http://127.0.0.1:${port}/`));

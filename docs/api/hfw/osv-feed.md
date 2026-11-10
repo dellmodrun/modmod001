@@ -6,7 +6,7 @@ url: https://www.hacktron.ai/docs/api/hfw/osv-feed
 
 # List malware feed
 
-Returns entries from the known-malware feed, which Hacktron uses to generate the package sitemap. Page through the feed with the `limit` and `offset` query parameters.
+Returns entries from the known-malware feed, which Formant uses to generate the package sitemap. Page through the feed with the `limit` and `offset` query parameters.
 
 This is a public endpoint.
 
