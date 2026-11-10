@@ -34,6 +34,7 @@
 
 .formant-hero > iframe {
   border: 0;
+  z-index: 0;
   position: absolute;
   inset: calc(-1 * var(--header-height)) 0 0;
   width: 100%;
@@ -42,7 +43,7 @@
 
 .formant-hero-copy {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   width: 100%;
   max-width: 42rem;
   min-width: 0;
@@ -152,8 +153,38 @@ button.formant-button { font: inherit; }
   text-decoration: underline;
 }
 
-.formant-ca button:disabled { color: var(--formant-soft); cursor: default; text-decoration: none; }
+.formant-ca button:disabled { display: none; color: var(--formant-soft); cursor: default; text-decoration: none; }
 .formant-action-status { min-height: 1.25em; margin-top: 8px !important; color: var(--formant-orange); font-size: var(--text-small) !important; }
+
+.formant-topbar {
+  position: absolute;
+  top: 16px;
+  right: var(--margin);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.formant-ca-compact {
+  width: auto;
+  min-width: 9rem;
+  min-height: 42px;
+  margin: 0;
+  padding-block: 8px;
+  background: color-mix(in oklab, var(--formant-blue) 82%, transparent);
+  backdrop-filter: blur(10px);
+}
+
+.formant-top-button { min-height: 42px; }
+.formant-hero > .formant-action-status {
+  position: absolute;
+  top: 70px;
+  right: var(--margin);
+  z-index: 3;
+  margin: 0 !important;
+  text-align: right;
+}
 
 .formant-wallet-dialog {
   width: min(440px, calc(100vw - 32px));
@@ -516,18 +547,25 @@ dialog#menu a:hover { color: var(--formant-orange); }
 
 @media (min-width: 1024px) {
   .formant-hero {
-    grid-template-columns: minmax(0, 44%) minmax(0, 56%);
-    align-items: center;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: end;
+  }
+  .formant-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(90deg, var(--formant-blue) 0%, var(--formant-blue) 25%, rgb(1 44 245 / .92) 39%, rgb(1 44 245 / .34) 57%, transparent 72%);
   }
   .formant-hero > iframe {
-    inset: 0 0 0 44%;
-    width: 56%;
-    height: 100%;
+    inset: calc(-1 * var(--header-height)) 0 0;
+    width: 100%;
+    height: calc(100% + var(--header-height));
   }
   .formant-hero-copy {
-    grid-column: 1;
-    max-width: none;
-    padding: calc(var(--header-height) + 48px) clamp(36px, 5vw, 84px) 48px var(--margin);
+    max-width: 43rem;
+    padding: 0 var(--margin) 48px;
   }
   .formant-hero h1 {
     max-width: 10ch;
@@ -536,8 +574,6 @@ dialog#menu a:hover { color: var(--formant-orange); }
   .formant-hero-copy > p:not(.formant-kicker):not(.formant-actions) {
     max-width: 38rem;
   }
-  .formant-ca { grid-template-columns: auto minmax(0, 1fr); }
-  .formant-ca button { display: none; }
   .formant-scene-section { min-height: 760px; }
   .formant-scene-section product-scene {
     position: absolute;
@@ -566,6 +602,27 @@ dialog#menu a:hover { color: var(--formant-orange); }
   .formant-hero-copy > p:not(.formant-kicker):not(.formant-actions) {
     font-size: 15.5px;
     line-height: 1.42;
+  }
+  .formant-topbar {
+    top: 10px;
+    left: var(--margin);
+    right: var(--margin);
+    justify-content: flex-end;
+  }
+  .formant-ca-compact {
+    min-width: 6.5rem;
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+  .formant-ca-compact button { display: none; }
+  button.formant-top-button {
+    width: 5rem;
+    font-size: 0 !important;
+  }
+  button.formant-top-button::after { content: "Wallet"; font-size: var(--text-small); }
+  .formant-hero > .formant-action-status {
+    top: 62px;
+    left: var(--margin);
+    right: var(--margin);
   }
   .formant-index { top: var(--header-height); }
   .formant-scene-section product-scene { mask-image: none; }
