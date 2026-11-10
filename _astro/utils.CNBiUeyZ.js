@@ -1,0 +1,1 @@
+var e=(e,t=`en-US`)=>new Intl.DateTimeFormat(t,{year:`numeric`,month:`2-digit`,day:`2-digit`,timeZone:`UTC`}).formatToParts(e).filter(({type:e})=>e!==`literal`).map(({value:e})=>e).join(`.`),t=(e,t)=>e.replace(/\{(\w+)\}/g,(e,n)=>t[n]??e),n=(e,n,r)=>t(e[new Intl.PluralRules(r).select(n)]??e.other??``,{n:n.toLocaleString(r)});export{t as n,n as r,e as t};

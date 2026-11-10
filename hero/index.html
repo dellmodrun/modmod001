@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hacktron figure</title>
+<base href="/modmod001/hero/">
+<link rel="icon" href="data:,">
+<script>
+  {
+    const root = document.documentElement;
+    const host = parent !== window ? parent.document : null;
+    const system = parent.matchMedia('(prefers-color-scheme: dark)');
+    const sync = () => {
+      const chosen = host?.documentElement.dataset.theme;
+      const dark = chosen ? chosen === 'dark' : system.matches;
+      root.dataset.theme = dark ? 'dark' : 'light';
+    };
+    sync();
+    system.addEventListener('change', sync);
+    if (host) {
+      new MutationObserver(sync).observe(host.documentElement, {
+        attributeFilter: ['data-theme']
+      });
+      const font = host.querySelector('link[rel="preload"][as="font"][href*="recursive"]');
+      if (font) {
+        const face = document.createElement('style');
+        face.textContent = `@font-face { font-family: "Recursive"; src: url("${font.href}")
+          format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }`;
+        document.head.append(face);
+      }
+      const caption = host.querySelector('section[data-hero] hero-copy');
+      const mirror = () => {
+        const box = document.querySelector('.copy');
+        if (!box || !caption || !frameElement) return;
+        const c = caption.getBoundingClientRect();
+        const f = frameElement.getBoundingClientRect();
+        Object.assign(box.style, {
+          left: `${c.left - f.left}px`, top: `${c.top - f.top}px`,
+          width: `${c.width}px`, height: `${c.height}px`
+        });
+      };
+      addEventListener('DOMContentLoaded', mirror);
+      if (caption) new ResizeObserver(mirror).observe(caption);
+      addEventListener('resize', mirror);
+      addEventListener('keydown', (e) => {
+        if (e.key.toLowerCase() === 'c' && !e.metaKey && !e.ctrlKey) return;
+        parent.dispatchEvent(new KeyboardEvent('keydown', e));
+      });
+      addEventListener('DOMContentLoaded', () => {
+        const stage = document.querySelector('.stage');
+        const done = () => stage.matches('[data-live], [data-error]');
+        const tell = () => parent.postMessage('ready', '*');
+        if (done()) return tell();
+        new MutationObserver((_, seen) => {
+          if (!done()) return;
+          seen.disconnect();
+          tell();
+        }).observe(stage, { attributeFilter: ['data-live', 'data-error'] });
+      });
+    }
+  }
+</script>
+<script type="importmap">
+{ "imports": {
+  "three": "/modmod001/scenes/shared/three@0.186.0/build/three.module.min.js",
+  "/modmod001/scenes/shared/three@0.186.0/build/three.core.js": "/modmod001/scenes/shared/three@0.186.0/build/three.core.min.js",
+  "three/addons/": "/modmod001/scenes/shared/three@0.186.0/examples/jsm/"
+} }
+</script>
+<style>
+  :root {
+    --surface: #efeae4; --ink: #291b38; --mid: #786e7d; --light: #a0979f; --faint: #c8c1c2;
+    --label: #b2aaaf; --part: #c5bebf; --sheet: #c2bbbc; --sheet-key: #cfc9c8; --rule: #dad5d2;
+    --accent: #cc291f; --hair: 1px; --margin: 36px;
+    --mono: "Recursive", ui-monospace, SFMono-Regular, Menlo, monospace;
+    color-scheme: light;
+  }
+  :root[data-theme="dark"] {
+    --surface: #181613; --ink: #f1e9d6; --mid: #9a9488; --light: #6f6a61; --faint: #43403a;
+    --label: #5b5750; --part: #46433d; --sheet: #4a4640; --sheet-key: #3b3732; --rule: #2f2c28;
+    --accent: #ee6853;
+    color-scheme: dark;
+  }
+  :root:not([data-theme="dark"]) .poster { mix-blend-mode: multiply; }
+  @media (resolution >= 2dppx) { :root { --hair: 0.5px; } }
+  * { box-sizing: border-box; letter-spacing: 0.02em; }
+  html, body { height: 100%; margin: 0; overflow: hidden; background: var(--surface); }
+  body { font: 400 12px/1.25 var(--mono); font-variant-numeric: tabular-nums; color: var(--ink); }
+  .hero { position: relative; height: 100%; }
+  .stage {
+    position: absolute; inset: 0; overflow: hidden; cursor: grab; touch-action: pan-y;
+    &[data-dragging] { cursor: grabbing; }
+    &:focus:not(:focus-visible) { outline: none; }
+    & canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  }
+  .cursor {
+    position: absolute; inset: 0; pointer-events: none;
+    &::before, &::after {
+      content: ''; position: absolute;
+      background: color-mix(in srgb, var(--ink) 10%, transparent);
+    }
+    &::before { top: 0; bottom: 0; left: 0; width: var(--hair); transform: translateX(var(--x)); }
+    &::after { left: 0; right: 0; top: 0; height: var(--hair); transform: translateY(var(--y)); }
+    & span {
+      position: absolute;
+      left: min(calc(var(--x) + 6px), calc(100% - 84px));
+      top: min(calc(var(--y) + 4px), calc(100% - 16px));
+      font-size: 10px; white-space: nowrap; color: var(--sheet);
+    }
+  }
+  .copy { position: absolute; pointer-events: none; }
+  .stage canvas, .overlay { opacity: 0; transition: opacity 0.4s; }
+  .stage[data-live] canvas, .stage[data-live] .overlay { opacity: 1; }
+  .poster {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: scale-down; pointer-events: none;
+    opacity: 0; animation: poster-in 0.4s 1.5s forwards;
+  }
+  @media (width >= 960px) { .poster { translate: 0 4%; } }
+  .stage[data-error] .poster { animation: none; opacity: 1; }
+  .stage[data-live] .poster { display: none; }
+  @keyframes poster-in { to { opacity: 1; } }
+  :root[data-theme="dark"] .poster { filter: invert(1) hue-rotate(180deg); mix-blend-mode: screen; }
+  .notice {
+    position: absolute; top: calc(var(--margin) - 6px); right: calc(var(--margin) + 16px);
+    margin: 0; z-index: 1;
+    font-size: 10px; line-height: 12px; color: var(--mid);
+  }
+  .overlay {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    pointer-events: none; overflow: visible; user-select: none; -webkit-user-select: none;
+    font-family: var(--mono); font-variation-settings: "MONO" 0.5;
+    font-variant-numeric: tabular-nums;
+    & .label { font-size: 9px; fill: var(--label); pointer-events: auto; }
+    & .part { font-size: 8px; fill: var(--part); }
+    & .leader { fill: none; stroke: var(--rule); stroke-width: var(--hair); stroke-dasharray: 3 2; }
+    & .marker { fill: var(--surface); stroke: var(--part); stroke-width: var(--hair); }
+    & .leader.active, & .marker.active { stroke: var(--accent); }
+    & .marker.active { fill: var(--accent); }
+    & text.active, & text.active .part { fill: var(--ink); }
+    & .sheet, & .sheet-datum, & .sheet-leader {
+      fill: none; stroke: var(--rule); stroke-width: var(--hair);
+    }
+    & .sheet-datum { stroke-dasharray: 12 3 2 3; }
+    & .sheet-leader { stroke-dasharray: 3 2; }
+    & .sheet-fill { fill: var(--surface); }
+    & .sheet-text, & .sheet-key { font-size: 10px; fill: var(--sheet); }
+    & .sheet-key { fill: var(--sheet-key); }
+  }
+  @media (width < 960px) { :root { --margin: 16px; } }
+  @media (prefers-reduced-motion: reduce) {
+    .stage canvas, .overlay { transition: none; }
+    .poster { animation-duration: 0s; }
+  }
+</style>
+</head>
+<body>
+<section class="hero">
+  <div class="stage" tabindex="0" role="group" aria-keyshortcuts="C"
+    aria-label="Figure: drag to turn it, Shift and drag to roll it, C copies the angles">
+    <canvas role="img"
+      aria-label="Line drawing of a robotic hand and a human hand reaching for each other, at the same scale, labelled like a datasheet"></canvas>
+    <picture>
+      <source media="(width < 600px)" srcset="assets/poster-mobile.png">
+      <source media="(width < 960px)" srcset="assets/poster-tablet.png">
+      <img class="poster" src="assets/poster.png" srcset="assets/poster@2x.png 2x" alt=""
+        fetchpriority="high">
+    </picture>
+    <p class="notice" hidden></p>
+    <div class="cursor" hidden><span></span></div>
+  </div>
+  <div class="copy"></div>
+</section>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>

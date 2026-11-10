@@ -1,0 +1,1 @@
+var e=`cf-turnstile-response`,t=new Set([`agent0x.com`,`gmail.com`,`hotmail.com`,`icloud.com`,`kayba.dev`,`outlook.com`,`protonmail.com`,`yahoo.com`]),n=e=>!t.has(e.trim().split(`@`).at(-1)?.toLowerCase()??``);export{n,e as t};

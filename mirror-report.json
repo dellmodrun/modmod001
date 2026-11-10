@@ -1,0 +1,240 @@
+{
+  "origin": "https://www.hacktron.ai",
+  "finishedAt": "2026-11-08T12:56:21.271Z",
+  "saved": 2155,
+  "discovered": 2213,
+  "failures": [
+    {
+      "url": "https://www.hacktron.ai/%23clip0_88_19",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/blog/blob",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/blog/o.url",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/blog/imageUrl",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/blog/wavBlob",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/blog/%7F%20%20&",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/blog/&",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/customers/%23clip0_88_19",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/location.href",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/api/contact",
+      "error": "405 Method Not Allowed"
+    },
+    {
+      "url": "https://www.hacktron.ai/de/%23clip0_88_19",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/de/customers/%23clip0_88_19",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/de/location.href",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/es/location.href",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/es/%23clip0_88_19",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/es/customers/%23clip0_88_19",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/fr/location.href",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/fr/customers/%23clip0_88_19",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/fr/%23clip0_88_19",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/ja/location.href",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/ja/customers/%23clip0_88_19",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/ja/%23clip0_88_19",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/ko/customers/%23clip0_88_19",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/ko/location.href",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/ko/%23clip0_88_19",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/pt/location.href",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/pt/customers/%23clip0_88_19",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/pt/%23clip0_88_19",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/zh/%23clip0_88_19",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/zh/location.href",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/zh/customers/%23clip0_88_19",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/static/array.js",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/scenes/shared/three@0.186.0/build/three.core.js",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/scenes/whitebox-home/three/addons/utils/BufferGeometryUtils.js",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/scenes/whitebox-home/three",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/scenes/whitebox-home/three/addons/lines/LineSegmentsGeometry.js",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/scenes/whitebox-home/three/addons/lines/LineSegments2.js",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/scenes/whitebox-home/,%200)%20*%201000;%20%20let%20t0%20=%20q.has(",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/hero/src/three",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/hero/src/three/addons/utils/BufferGeometryUtils.js",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/scenes/red/three",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/scenes/review-home/three",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/scenes/red/three/addons/lines/LineSegments2.js",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/scenes/red/three/addons/lines/LineSegmentsGeometry.js",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/scenes/red/three/addons/utils/BufferGeometryUtils.js",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/scenes/review-home/three/addons/utils/BufferGeometryUtils.js",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/scenes/review-home/three/addons/lines/LineSegments2.js",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/scenes/whitebox/,%200),%20stopped%20=%200,%20raf%20=%200,%20shown%20=%20true;const%20T%20=%20()%20=%3E%20(still()%20&&%20!q.has(",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/scenes/review-home/three/addons/lines/LineSegmentsGeometry.js",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/scenes/review/three/addons/lines/LineSegments2.js",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/scenes/review/,%200);%20%20let%20t0%20=%20q.has(",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/scenes/review/three/addons/lines/LineSegmentsGeometry.js",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/scenes/review/three",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/scenes/review/three/addons/utils/BufferGeometryUtils.js",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/hero/src/three/addons/lines/LineSegments2.js",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/hero/src/three/addons/lines/LineMaterial.js",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/hero/src/three/addons/loaders/GLTFLoader.js",
+      "error": "404 Not Found"
+    },
+    {
+      "url": "https://www.hacktron.ai/hero/src/three/addons/lines/LineSegmentsGeometry.js",
+      "error": "404 Not Found"
+    }
+  ]
+}

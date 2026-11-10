@@ -1,0 +1,21 @@
+{
+  "robot": {
+    "view": { "tilt": 38, "yaw": 30, "lean": -26, "roll": 0 },
+    "fit": [3.65, 0.0191, 0.0567],
+    "mobile": { "fit": [3.6, 0.0153, 0.0814] },
+    "pose": {
+      "i-mcp": 0, "i-pip": 0, "m-mcp": 35, "m-pip": 45, "r-mcp": 45, "r-pip": 55,
+      "p-mcp": 55, "p-pip": 65, "t-cmc": 34.4, "t-abd": 0, "t-mcp": 11.5, "t-pip": 14.3,
+      "m-abd": 0, "r-abd": -4.6, "p-abd": -9.2
+    }
+  },
+  "human": {
+    "view": { "tilt": -35, "yaw": -40, "lean": -4, "roll": 0 },
+    "fit": [2.7, -0.0133, 0.0304],
+    "mobile": { "fit": [3.6, -0.0153, 0.0635] },
+    "pose": {
+      "wrist": -25, "deviation": 0, "index": [8, 14, 8], "middle": [60, 45, 20],
+      "ring": [70, 55, 25], "little": [75, 65, 30], "thumb": [15, 30, 10, 20], "spread": 4
+    }
+  }
+}
