@@ -4,17 +4,17 @@
   "start_url": "/modmod001/",
   "icons": [
     {
-      "src": "/modmod001/web-app-manifest-192x192.png?v=formant-2",
+      "src": "/modmod001/web-app-manifest-192x192.png?v=formant-blue-1",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/modmod001/web-app-manifest-512x512.png?v=formant-2",
+      "src": "/modmod001/web-app-manifest-512x512.png?v=formant-blue-1",
       "sizes": "512x512",
       "type": "image/png"
     }
   ],
-  "theme_color": "#efeae4",
-  "background_color": "#efeae4",
+  "theme_color": "#012cf5",
+  "background_color": "#012cf5",
   "display": "standalone"
 }
