@@ -16,6 +16,8 @@
   overflow: clip;
 }
 
+.formant-scene-filters { position: absolute; pointer-events: none; }
+
 .formant-content a {
   color: inherit;
 }
@@ -93,6 +95,18 @@
   transition: background .18s ease, color .18s ease, border-color .18s ease;
 }
 
+button.formant-button { font: inherit; }
+
+.formant-icon-button {
+  width: 2.75rem;
+  padding-inline: .75rem;
+  display: inline-grid;
+  place-items: center;
+}
+
+.formant-icon-button svg { width: 17px; height: 17px; }
+.formant-icon-button[aria-disabled="true"] { opacity: .68; }
+
 .formant-button:hover,
 .formant-button:focus-visible,
 .formant-button[data-primary] {
@@ -100,6 +114,85 @@
   background: var(--formant-orange);
   border-color: var(--formant-orange);
 }
+
+.formant-ca {
+  width: min(100%, 38rem);
+  min-height: 48px;
+  margin-top: 14px;
+  padding: 10px 12px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid color-mix(in oklab, var(--formant-white) 30%, transparent);
+  background: color-mix(in oklab, var(--formant-panel) 84%, transparent);
+}
+
+.formant-ca > span {
+  color: var(--formant-orange);
+  font-size: var(--text-small);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.formant-ca code {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background: transparent;
+  padding: 0;
+}
+
+.formant-ca button {
+  border: 0;
+  padding: 0;
+  color: var(--formant-white);
+  background: transparent;
+  text-decoration: underline;
+}
+
+.formant-ca button:disabled { color: var(--formant-soft); cursor: default; text-decoration: none; }
+.formant-action-status { min-height: 1.25em; margin-top: 8px !important; color: var(--formant-orange); font-size: var(--text-small) !important; }
+
+.formant-wallet-dialog {
+  width: min(440px, calc(100vw - 32px));
+  padding: 0;
+  border: 1px solid color-mix(in oklab, var(--formant-white) 40%, transparent);
+  color: var(--formant-white);
+  background: var(--formant-blue);
+}
+
+.formant-wallet-dialog::backdrop { background: rgb(0 13 96 / .72); backdrop-filter: blur(8px); }
+.formant-wallet-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px;
+  border-bottom: 1px solid color-mix(in oklab, var(--formant-white) 24%, transparent);
+}
+.formant-wallet-head button {
+  border: 0;
+  padding: 0;
+  color: var(--formant-soft);
+  background: transparent;
+  text-decoration: underline;
+}
+.formant-wallet-list { display: grid; padding: 10px; gap: 8px; }
+.formant-wallet-list button {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 16px;
+  border: 1px solid color-mix(in oklab, var(--formant-white) 24%, transparent);
+  color: var(--formant-white);
+  background: var(--formant-panel);
+  text-align: left;
+}
+.formant-wallet-list button:hover { border-color: var(--formant-orange); }
+.formant-wallet-list button span:last-child { color: var(--formant-orange); font-size: var(--text-small); }
+.formant-wallet-empty { padding: 24px; color: var(--formant-soft); line-height: 1.5; }
 
 .formant-index {
   position: sticky;
@@ -422,7 +515,29 @@ dialog#menu a:hover { color: var(--formant-orange); }
 }
 
 @media (min-width: 1024px) {
-  .formant-hero-copy { padding-bottom: 36px; }
+  .formant-hero {
+    grid-template-columns: minmax(0, 44%) minmax(0, 56%);
+    align-items: center;
+  }
+  .formant-hero > iframe {
+    inset: 0 0 0 44%;
+    width: 56%;
+    height: 100%;
+  }
+  .formant-hero-copy {
+    grid-column: 1;
+    max-width: none;
+    padding: calc(var(--header-height) + 48px) clamp(36px, 5vw, 84px) 48px var(--margin);
+  }
+  .formant-hero h1 {
+    max-width: 10ch;
+    font-size: clamp(3rem, 5.2vw, 5.2rem);
+  }
+  .formant-hero-copy > p:not(.formant-kicker):not(.formant-actions) {
+    max-width: 38rem;
+  }
+  .formant-ca { grid-template-columns: auto minmax(0, 1fr); }
+  .formant-ca button { display: none; }
   .formant-scene-section { min-height: 760px; }
   .formant-scene-section product-scene {
     position: absolute;

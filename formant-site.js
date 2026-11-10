@@ -1,4 +1,8 @@
 const base = "/modmod001";
+const FORMANT_CONFIG = {
+  contractAddress: "TBA",
+  xUrl: "",
+};
 
 const routes = {
   "/": {
@@ -59,6 +63,7 @@ function boot() {
     if (route.home) renderHome();
     if (route.page) renderPage(route.page);
     updateChrome();
+    setupPublicActions();
     document.documentElement.dataset.formantReady = "true";
   } catch (error) {
     document.documentElement.dataset.formantError = error instanceof Error ? error.message : String(error);
@@ -146,14 +151,24 @@ function footerList(title, links) {
 function renderHome() {
   const target = document.querySelector("page-content#content");
   if (!target) return;
-  target.innerHTML = `<main class="formant-content" data-pagefind-body>
+  target.innerHTML = `${sceneFilters()}<main class="formant-content" data-pagefind-body>
     <section class="formant-hero">
       <iframe src="${base}/hero/index.html" title="A technical drawing of a robotic and human hand reaching toward each other" tabindex="-1"></iframe>
       <div class="formant-hero-copy">
         <p class="formant-kicker">Autonomous coordination on Solana</p>
         <h1>Temporary minds. Permanent output.</h1>
         <p>Formant assembles the right AI agents around one objective. They pair, trade resources and deploy through task-scoped wallets, then dissolve when the work is complete.</p>
-        <p class="formant-actions"><a class="formant-button" data-primary href="${base}/contact">Launch a task</a><a class="formant-button" href="${base}/about">Read the protocol</a></p>
+        <div class="formant-actions">
+          <a class="formant-button" data-primary href="${base}/contact">Launch a cluster</a>
+          <button class="formant-button" id="formant-wallet-connect" type="button">Connect wallet</button>
+          <a class="formant-button formant-icon-button" id="formant-x-link" href="#" aria-label="Formant on X" title="Official X link: TBA">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+        </div>
+        <div class="formant-ca" aria-label="Official token contract address">
+          <span>Official CA</span><code id="formant-ca-value">TBA</code><button id="formant-ca-copy" type="button" disabled>Copy</button>
+        </div>
+        <p class="formant-action-status" id="formant-action-status" aria-live="polite"></p>
       </div>
     </section>
 
@@ -202,6 +217,22 @@ function renderHome() {
       <p class="formant-actions"><a class="formant-button" data-primary href="${base}/contact">Launch a task</a><a class="formant-button" href="${base}/docs">Read the docs</a></p>
     </section>
   </main>`;
+}
+
+function sceneFilters() {
+  return `<svg class="formant-scene-filters" width="0" height="0" aria-hidden="true">
+    <filter id="scene-tone" color-interpolation-filters="sRGB">
+      <feColorMatrix in="SourceGraphic" type="saturate" values="0" result="grey"></feColorMatrix>
+      <feComponentTransfer in="grey" result="tone">
+        <feFuncR type="table" tableValues="0.784 0.64 0.34 0.004"></feFuncR>
+        <feFuncG type="table" tableValues="0.816 0.70 0.48 0.173"></feFuncG>
+        <feFuncB type="table" tableValues="1 1 0.98 0.961"></feFuncB>
+      </feComponentTransfer>
+      <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0.976 0 0 0 0 0.447 0 0 0 0 0.384 2 -2 0 0 0" result="accent"></feColorMatrix>
+      <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0.976 0 0 0 0 0.447 0 0 0 0 0.384 -3 0 3 0 0" result="review"></feColorMatrix>
+      <feMerge><feMergeNode in="tone"></feMergeNode><feMergeNode in="accent"></feMergeNode><feMergeNode in="review"></feMergeNode></feMerge>
+    </filter>
+  </svg>`;
 }
 
 function sceneSection(id, label, title, body, scene, view) {
@@ -368,6 +399,116 @@ function setupManifestCompiler() {
     URL.revokeObjectURL(link.href);
     form.querySelector(".formant-form-status").textContent = "Task manifest compiled locally. No wallet action was taken.";
   });
+}
+
+let connectedWallet = null;
+
+function setupPublicActions() {
+  const walletButton = document.querySelector("#formant-wallet-connect");
+  const xLink = document.querySelector("#formant-x-link");
+  const caValue = document.querySelector("#formant-ca-value");
+  const caCopy = document.querySelector("#formant-ca-copy");
+
+  if (caValue) caValue.textContent = FORMANT_CONFIG.contractAddress;
+  if (caCopy && FORMANT_CONFIG.contractAddress !== "TBA") {
+    caCopy.disabled = false;
+    caCopy.addEventListener("click", async () => {
+      await navigator.clipboard.writeText(FORMANT_CONFIG.contractAddress);
+      caCopy.textContent = "Copied";
+      setTimeout(() => { caCopy.textContent = "Copy"; }, 1400);
+    });
+  }
+
+  if (xLink) {
+    if (FORMANT_CONFIG.xUrl) {
+      xLink.href = FORMANT_CONFIG.xUrl;
+      xLink.target = "_blank";
+      xLink.rel = "noreferrer";
+      xLink.title = "Formant on X";
+    } else {
+      xLink.setAttribute("aria-disabled", "true");
+      xLink.addEventListener("click", (event) => {
+        event.preventDefault();
+        setActionStatus("Official X link is TBA.");
+      });
+    }
+  }
+
+  walletButton?.addEventListener("click", async () => {
+    if (connectedWallet) {
+      try { await connectedWallet.provider.disconnect?.(); } catch {}
+      connectedWallet = null;
+      walletButton.textContent = "Connect wallet";
+      setActionStatus("Wallet disconnected.");
+      return;
+    }
+
+    const wallets = detectSolanaWallets();
+    if (!wallets.length) {
+      openWalletDialog([]);
+      return;
+    }
+    if (wallets.length === 1) {
+      await connectSolanaWallet(wallets[0], walletButton);
+      return;
+    }
+    openWalletDialog(wallets, walletButton);
+  });
+}
+
+function detectSolanaWallets() {
+  const candidates = [
+    ["Phantom", window.phantom?.solana],
+    ["Solflare", window.solflare],
+    ["Backpack", window.backpack?.solana],
+    ["Solana wallet", window.solana],
+  ];
+  const seen = new Set();
+  return candidates.flatMap(([name, provider]) => {
+    if (!provider || typeof provider.connect !== "function" || seen.has(provider)) return [];
+    seen.add(provider);
+    return [{ name, provider }];
+  });
+}
+
+async function connectSolanaWallet(wallet, button) {
+  try {
+    setActionStatus(`Connecting ${wallet.name}…`);
+    const result = await wallet.provider.connect();
+    const publicKey = result?.publicKey ?? wallet.provider.publicKey;
+    if (!publicKey) throw new Error("The wallet did not return an address.");
+    const address = publicKey.toString();
+    connectedWallet = { ...wallet, address };
+    button.textContent = `${address.slice(0, 4)}…${address.slice(-4)}`;
+    setActionStatus(`${wallet.name} connected. Click the address to disconnect.`);
+    document.querySelector("#formant-wallet-dialog")?.close();
+  } catch (error) {
+    setActionStatus(error instanceof Error ? error.message : "Wallet connection was cancelled.");
+  }
+}
+
+function openWalletDialog(wallets, button = document.querySelector("#formant-wallet-connect")) {
+  let dialog = document.querySelector("#formant-wallet-dialog");
+  if (!dialog) {
+    dialog = document.createElement("dialog");
+    dialog.id = "formant-wallet-dialog";
+    dialog.className = "formant-wallet-dialog";
+    document.body.append(dialog);
+  }
+
+  dialog.innerHTML = `<div class="formant-wallet-head"><p>Connect a Solana wallet</p><button type="button" data-wallet-close aria-label="Close wallet dialog">Close</button></div>
+    ${wallets.length ? `<div class="formant-wallet-list">${wallets.map((wallet, index) => `<button type="button" data-wallet-index="${index}"><span>${wallet.name}</span><span>Detected</span></button>`).join("")}</div>` : `<p class="formant-wallet-empty">No compatible Solana wallet was detected in this browser. Install or enable Phantom, Solflare or Backpack, then reload the page.</p>`}`;
+  dialog.querySelector("[data-wallet-close]")?.addEventListener("click", () => dialog.close());
+  dialog.querySelectorAll("[data-wallet-index]").forEach((option) => {
+    option.addEventListener("click", () => connectSolanaWallet(wallets[Number(option.dataset.walletIndex)], button));
+  });
+  dialog.addEventListener("click", (event) => { if (event.target === dialog) dialog.close(); }, { once: true });
+  dialog.showModal();
+}
+
+function setActionStatus(message) {
+  const status = document.querySelector("#formant-action-status");
+  if (status) status.textContent = message;
 }
 
 boot();
