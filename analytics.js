@@ -34,7 +34,7 @@
           (p.async = !0),
           (p.src =
             s.api_host.replace(".i.posthog.com", "-assets.i.posthog.com") +
-            "/modmod001/static/array.js"),
+            "/static/array.js"),
           (p.onerror = function () {
             p = null
           }),

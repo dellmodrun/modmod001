@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "paths": {
-    "/modmod001/scans": {
+    "/scans": {
       "post": {
         "operationId": "RestScanController_create",
         "parameters": [],
@@ -123,7 +123,7 @@
         "tags": ["REST API - Scans"]
       }
     },
-    "/modmod001/scans/{id}/stop": {
+    "/scans/{id}/stop": {
       "post": {
         "operationId": "RestScanController_stop",
         "parameters": [
@@ -152,7 +152,7 @@
         "tags": ["REST API - Scans"]
       }
     },
-    "/modmod001/scans/{id}/status": {
+    "/scans/{id}/status": {
       "get": {
         "operationId": "RestScanController_getStatus",
         "parameters": [
@@ -181,7 +181,7 @@
         "tags": ["REST API - Scans"]
       }
     },
-    "/modmod001/scans/{id}/findings/export": {
+    "/scans/{id}/findings/export": {
       "get": {
         "operationId": "RestScanController_exportFindings",
         "parameters": [
@@ -213,7 +213,7 @@
         "tags": ["REST API - Scans"]
       }
     },
-    "/modmod001/scans/{id}/findings": {
+    "/scans/{id}/findings": {
       "get": {
         "operationId": "RestScanController_listScanFindings",
         "parameters": [
@@ -351,7 +351,7 @@
         "tags": ["REST API - Scans"]
       }
     },
-    "/modmod001/scans/{id}": {
+    "/scans/{id}": {
       "get": {
         "operationId": "RestScanController_getById",
         "parameters": [
@@ -380,7 +380,7 @@
         "tags": ["REST API - Scans"]
       }
     },
-    "/modmod001/findings": {
+    "/findings": {
       "get": {
         "operationId": "RestFindingController_list",
         "parameters": [
@@ -510,7 +510,7 @@
         "tags": ["REST API - Findings"]
       }
     },
-    "/modmod001/findings/counts": {
+    "/findings/counts": {
       "get": {
         "operationId": "RestFindingController_counts",
         "parameters": [
@@ -601,7 +601,7 @@
         "tags": ["REST API - Findings"]
       }
     },
-    "/modmod001/findings/export": {
+    "/findings/export": {
       "get": {
         "operationId": "RestFindingController_exportFindings",
         "parameters": [
@@ -734,7 +734,7 @@
         "tags": ["REST API - Findings"]
       }
     },
-    "/modmod001/findings/{id}": {
+    "/findings/{id}": {
       "patch": {
         "operationId": "RestFindingController_update",
         "parameters": [
@@ -802,7 +802,7 @@
         "tags": ["REST API - Findings"]
       }
     },
-    "/modmod001/findings/{id}/comments": {
+    "/findings/{id}/comments": {
       "post": {
         "operationId": "RestFindingController_addComment",
         "parameters": [
@@ -842,7 +842,7 @@
         "tags": ["REST API - Findings"]
       }
     },
-    "/modmod001/cost-estimations": {
+    "/cost-estimations": {
       "post": {
         "operationId": "RestCostEstimationController_create",
         "parameters": [],
@@ -907,7 +907,7 @@
         "tags": ["REST API - Cost Estimations"]
       }
     },
-    "/modmod001/cost-estimations/{id}": {
+    "/cost-estimations/{id}": {
       "get": {
         "operationId": "RestCostEstimationController_findOne",
         "parameters": [
@@ -936,7 +936,7 @@
         "tags": ["REST API - Cost Estimations"]
       }
     },
-    "/modmod001/repos": {
+    "/repos": {
       "get": {
         "operationId": "RestRepoController_list",
         "parameters": [],
@@ -956,7 +956,7 @@
         "tags": ["REST API - Repos"]
       }
     },
-    "/modmod001/hfw/verdicts/batch": {
+    "/hfw/verdicts/batch": {
       "post": {
         "description": "Public, fast-mode HFW batch verdict proxy. This endpoint is intentionally scoped to feed-backed verdicts and can be moved behind X-Api-Key later.",
         "operationId": "RestHfwController_getBatchVerdicts",
@@ -988,7 +988,7 @@
         "tags": ["REST API - HFW"]
       }
     },
-    "/modmod001/hfw/osv/feed": {
+    "/hfw/osv/feed": {
       "get": {
         "operationId": "RestHfwController_getOsvFeed",
         "parameters": [
@@ -1031,7 +1031,7 @@
         "tags": ["REST API - HFW"]
       }
     },
-    "/modmod001/hfw/verdict/{ecosystem}/{packageName}": {
+    "/hfw/verdict/{ecosystem}/{packageName}": {
       "get": {
         "description": "Public, fast-mode HFW verdict proxy. This endpoint is intentionally scoped to feed-backed verdicts and can be moved behind X-Api-Key later.",
         "operationId": "RestHfwController_getPackageVerdict",
@@ -1075,7 +1075,7 @@
         "tags": ["REST API - HFW"]
       }
     },
-    "/modmod001/hfw/verdict/{ecosystem}/{scope}/{packageName}": {
+    "/hfw/verdict/{ecosystem}/{scope}/{packageName}": {
       "get": {
         "operationId": "RestHfwController_getScopedNpmPackageVerdict",
         "parameters": [
@@ -1118,7 +1118,7 @@
         "tags": ["REST API - HFW"]
       }
     },
-    "/modmod001/pentests": {
+    "/pentests": {
       "post": {
         "operationId": "RestPentestController_create",
         "parameters": [],
@@ -1148,7 +1148,7 @@
         "tags": ["REST API - Pentests"]
       }
     },
-    "/modmod001/pentests/{id}": {
+    "/pentests/{id}": {
       "patch": {
         "operationId": "RestPentestController_update",
         "parameters": [
@@ -1214,7 +1214,7 @@
         "tags": ["REST API - Pentests"]
       }
     },
-    "/modmod001/pentests/{id}/login-checks": {
+    "/pentests/{id}/login-checks": {
       "post": {
         "operationId": "RestPentestController_checkLogins",
         "parameters": [
@@ -1258,7 +1258,7 @@
         "tags": ["REST API - Pentests"]
       }
     },
-    "/modmod001/pentests/{id}/estimate": {
+    "/pentests/{id}/estimate": {
       "post": {
         "operationId": "RestPentestController_estimate",
         "parameters": [
@@ -1287,7 +1287,7 @@
         "tags": ["REST API - Pentests"]
       }
     },
-    "/modmod001/pentests/{id}/start": {
+    "/pentests/{id}/start": {
       "post": {
         "operationId": "RestPentestController_start",
         "parameters": [
@@ -1335,7 +1335,7 @@
         "tags": ["REST API - Pentests"]
       }
     },
-    "/modmod001/archives/uploads": {
+    "/archives/uploads": {
       "post": {
         "operationId": "RestArchiveController_requestUpload",
         "parameters": [],
@@ -1365,7 +1365,7 @@
         "tags": ["REST API - Archives"]
       }
     },
-    "/modmod001/credits": {
+    "/credits": {
       "get": {
         "operationId": "RestCreditController_balance",
         "parameters": [],
@@ -1385,7 +1385,7 @@
         "tags": ["REST API - Credits"]
       }
     },
-    "/modmod001/repos/pr-reviews": {
+    "/repos/pr-reviews": {
       "post": {
         "operationId": "RestRepoController_setPrReviews",
         "parameters": [
@@ -1425,7 +1425,7 @@
         "tags": ["REST API - Repos"]
       }
     },
-    "/modmod001/pr-review-settings": {
+    "/pr-review-settings": {
       "get": {
         "operationId": "RestPrReviewSettingsController_get",
         "parameters": [
