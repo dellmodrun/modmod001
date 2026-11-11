@@ -1,7 +1,7 @@
 const base = "";
 const FORMANT_CONFIG = {
   contractAddress: "TBA",
-  contractAddressUrl: "https://raw.githubusercontent.com/dellmodrun/modmod001/gh-pages/ca.json",
+  contractAddressUrl: "https://cdn.jsdelivr.net/gh/dellmodrun/modmod001@gh-pages/ca.json",
   xUrl: "https://x.com/joinformantlab",
   memoProgram: "Memo4c2pN8afCj432Lb7RMVKi9PbQnnW7ewFFaV3oAH",
   rpc: {
