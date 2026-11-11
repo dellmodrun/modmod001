@@ -85,9 +85,7 @@ function updateChrome() {
   }
 
   for (const action of document.querySelectorAll("header-actions a[data-sign-in]")) {
-    action.href = `${base}/contact`;
-    action.textContent = "Launch [L]";
-    action.removeAttribute("target");
+    action.remove();
   }
 
   const menu = document.querySelector("dialog#menu");
