@@ -25,9 +25,6 @@
 .formant-hero {
   min-height: calc(100svh - var(--header-height));
   position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  align-items: end;
   min-width: 0;
   overflow: hidden;
 }
@@ -550,18 +547,6 @@ dialog#menu a:hover { color: var(--formant-orange); }
 }
 
 @media (min-width: 1024px) {
-  .formant-hero {
-    grid-template-columns: minmax(0, 1fr);
-    align-items: end;
-  }
-  .formant-hero::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-    background: linear-gradient(90deg, var(--formant-blue) 0%, var(--formant-blue) 25%, rgb(1 44 245 / .92) 39%, rgb(1 44 245 / .34) 57%, transparent 72%);
-  }
   .formant-hero > iframe {
     inset: calc(-1 * var(--header-height)) 0 0;
     width: 100%;
@@ -593,8 +578,8 @@ dialog#menu a:hover { color: var(--formant-orange); }
 
 @media (max-width: 699px) {
   .formant-content { width: 100vw; max-width: 100vw; }
-  .formant-hero { min-height: 780px; }
-  .formant-hero > iframe { height: 70%; }
+  .formant-hero { min-height: calc(100svh - var(--header-height)); }
+  .formant-hero > iframe { height: calc(100% + var(--header-height)); }
   .formant-hero-copy {
     width: calc(100vw - 2 * var(--margin));
     max-width: none;

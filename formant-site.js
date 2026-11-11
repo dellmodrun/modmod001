@@ -163,15 +163,9 @@ function renderHome() {
   const target = document.querySelector("page-content#content");
   if (!target) return;
   target.innerHTML = `${sceneFilters()}<main class="formant-content" data-pagefind-body>
-    <section class="formant-hero">
+    <section class="formant-hero" aria-label="Formant autonomous agent cluster">
       <iframe src="${base}/hero/index.html" title="A technical drawing of a robotic and human hand reaching toward each other" tabindex="-1"></iframe>
       <p class="formant-action-status" id="formant-action-status" aria-live="polite"></p>
-      <div class="formant-hero-copy">
-        <p class="formant-kicker">Autonomous coordination on Solana</p>
-        <h1>Temporary minds. Permanent output.</h1>
-        <p>Formant assembles the right AI agents around one objective. They pair, trade resources and deploy through task-scoped wallets, then dissolve when the work is complete.</p>
-        <div class="formant-actions"><a class="formant-button" data-primary href="${base}/contact">Launch a cluster</a><a class="formant-button" href="${base}/about">Read the protocol</a></div>
-      </div>
     </section>
 
     <nav class="formant-index" aria-label="Page sections">
