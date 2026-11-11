@@ -1,7 +1,7 @@
 const base = "/modmod001";
 const FORMANT_CONFIG = {
   contractAddress: "TBA",
-  xUrl: "",
+  xUrl: "https://x.com/formantonwork",
 };
 
 const routes = {
