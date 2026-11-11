@@ -1,7 +1,7 @@
 const base = "";
 const FORMANT_CONFIG = {
   contractAddress: "TBA",
-  xUrl: "https://x.com/formantonwork",
+  xUrl: "https://x.com/joinformantlab",
   memoProgram: "Memo4c2pN8afCj432Lb7RMVKi9PbQnnW7ewFFaV3oAH",
   rpc: {
     "solana-devnet": "https://api.devnet.solana.com",
