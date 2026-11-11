@@ -1,6 +1,6 @@
 const base = "";
 const FORMANT_CONFIG = {
-  contractAddress: "TBA",
+  contractAddress: "HDuXUXzs9s9j6kMFpKUhKCrNV2yGjjaNp8s2qxt5pump",
   xUrl: "https://x.com/joinformantlab",
   memoProgram: "Memo4c2pN8afCj432Lb7RMVKi9PbQnnW7ewFFaV3oAH",
   rpc: {
