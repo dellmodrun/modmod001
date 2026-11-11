@@ -39,7 +39,9 @@
 }
 
 .formant-hero-copy {
-  position: relative;
+  position: absolute;
+  left: 0;
+  bottom: 0;
   z-index: 2;
   width: 100%;
   max-width: 42rem;
