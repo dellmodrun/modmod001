@@ -399,14 +399,24 @@ artifact + verifier → settlement → dissolve</code></pre>
   },
 };
 
+const pageCtas = {
+  protocol: [["Launch a task", "/contact", true], ["Explore clusters", "/products/red"]],
+  clusters: [["Launch a task", "/contact", true], ["Read the protocol", "/about"]],
+  exchange: [["Launch a task", "/contact", true], ["Review wallet policy", "/about#wallet-policy"]],
+  settlement: [["Launch a task", "/contact", true], ["Read the documentation", "/docs"]],
+  deploy: [["Launch a task", "/contact", true], ["Read the documentation", "/docs"]],
+  docs: [["Launch a task", "/contact", true], ["Protocol overview", "/about"]],
+};
+
 function renderPage(key) {
   const target = document.querySelector("page-content#content");
   const page = pages[key];
   if (!target || !page) return;
+  const cta = pageCtas[key];
   target.innerHTML = `<main class="formant-content" data-pagefind-body>
     <header class="formant-page-hero"><p class="formant-kicker">${page.kicker}</p><h1>${page.title}</h1><p>${page.intro}</p><p class="formant-action-status" id="formant-action-status" aria-live="polite"></p></header>
     <article class="formant-section formant-prose">${page.body}</article>
-    <section class="formant-section formant-cta"><p class="formant-actions"><a class="formant-button" data-primary href="${base}/contact">Launch a task</a><a class="formant-button" href="${base}/about">Protocol overview</a></p></section>
+    ${cta ? `<section class="formant-section formant-cta"><p class="formant-actions">${cta.map(([label, href, primary]) => `<a class="formant-button"${primary ? " data-primary" : ""} href="${base}${href}">${label}</a>`).join("")}</p></section>` : ""}
   </main>`;
   if (key === "launch") setupManifestCompiler();
 }
