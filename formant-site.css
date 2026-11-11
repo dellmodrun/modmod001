@@ -158,14 +158,18 @@ button.formant-button { font: inherit; }
 .formant-ca-compact {
   width: auto;
   min-width: 9rem;
-  min-height: 42px;
+  height: 34px;
+  min-height: 34px;
   margin: 0;
-  padding-block: 8px;
-  background: color-mix(in oklab, var(--formant-blue) 82%, transparent);
-  backdrop-filter: blur(10px);
+  padding: 0 12px;
+  gap: 8px;
+  border: 0;
+  border-radius: var(--radius-medium);
+  background: color-mix(in oklab, var(--muted-2) 60%, transparent);
+  backdrop-filter: blur(12px);
 }
 
-.formant-top-button { min-height: 42px; }
+.formant-top-button { min-height: 34px; }
 .formant-header-ca { justify-self: start; }
 header-bar {
   display: grid !important;
@@ -179,7 +183,38 @@ header-actions {
   align-items: center;
   gap: 8px;
 }
-header-actions .formant-button { min-height: 42px; }
+header-actions .formant-button {
+  height: 34px;
+  min-height: 34px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: var(--radius-medium);
+  font-variation-settings: var(--semi-mono);
+  letter-spacing: .02em;
+  font-size: 14px;
+  background: color-mix(in oklab, var(--muted-2) 60%, transparent);
+  backdrop-filter: blur(12px);
+}
+header-actions .formant-icon-button {
+  width: 34px;
+  padding: 0;
+}
+header-actions .formant-button:hover,
+header-actions .formant-button:focus-visible {
+  color: var(--formant-white);
+  border-color: transparent;
+  background: color-mix(in oklab, var(--muted-2) 80%, transparent);
+}
+
+@media (min-width: 1024px) {
+  .formant-ca-compact,
+  header-actions .formant-button {
+    height: 30px;
+    min-height: 30px;
+    font-size: 12px;
+  }
+  header-actions .formant-icon-button { width: 30px; }
+}
 .formant-hero > .formant-action-status {
   position: absolute;
   top: 70px;
