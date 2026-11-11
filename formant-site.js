@@ -88,6 +88,19 @@ function updateChrome() {
     action.remove();
   }
 
+  const headerBar = document.querySelector("header-bar");
+  const headerActions = document.querySelector("header-actions");
+  if (headerBar && !headerBar.querySelector(".formant-header-ca")) {
+    headerBar.insertAdjacentHTML("afterbegin", `<div class="formant-ca formant-ca-compact formant-header-ca" aria-label="Official token contract address"><span>CA</span><code id="formant-ca-value">TBA</code><button id="formant-ca-copy" type="button" disabled>Copy</button></div>`);
+  }
+  if (headerActions && !headerActions.querySelector("#formant-wallet-connect")) {
+    headerActions.insertAdjacentHTML("afterbegin", `
+      <button class="formant-button formant-top-button" id="formant-wallet-connect" type="button">Connect wallet</button>
+      <a class="formant-button formant-icon-button" id="formant-x-link" href="#" aria-label="Formant on X" title="Official X link: TBA">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>`);
+  }
+
   const menu = document.querySelector("dialog#menu");
   if (menu) {
     menu.innerHTML = `
@@ -152,15 +165,6 @@ function renderHome() {
   target.innerHTML = `${sceneFilters()}<main class="formant-content" data-pagefind-body>
     <section class="formant-hero">
       <iframe src="${base}/hero/index.html" title="A technical drawing of a robotic and human hand reaching toward each other" tabindex="-1"></iframe>
-      <div class="formant-topbar" aria-label="Project actions">
-        <div class="formant-ca formant-ca-compact" aria-label="Official token contract address">
-          <span>CA</span><code id="formant-ca-value">TBA</code><button id="formant-ca-copy" type="button" disabled>Copy</button>
-        </div>
-        <button class="formant-button formant-top-button" id="formant-wallet-connect" type="button">Connect wallet</button>
-        <a class="formant-button formant-icon-button" id="formant-x-link" href="#" aria-label="Formant on X" title="Official X link: TBA">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-        </a>
-      </div>
       <p class="formant-action-status" id="formant-action-status" aria-live="polite"></p>
       <div class="formant-hero-copy">
         <p class="formant-kicker">Autonomous coordination on Solana</p>
