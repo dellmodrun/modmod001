@@ -1,4 +1,4 @@
-const base = "/modmod001";
+const base = "";
 const FORMANT_CONFIG = {
   contractAddress: "TBA",
   xUrl: "https://x.com/formantonwork",
