@@ -293,6 +293,8 @@ header-actions .formant-button:focus-visible {
   color: var(--formant-orange);
 }
 
+.formant-content [id] { scroll-margin-top: calc(var(--header-height) + 28px); }
+
 .formant-section,
 .formant-scene-section {
   padding: clamp(84px, 12vw, 188px) var(--margin) 0;
@@ -314,7 +316,7 @@ header-actions .formant-button:focus-visible {
 }
 
 .formant-section-head > p:last-child,
-.formant-page-hero > p:last-child {
+.formant-page-hero > h1 + p {
   max-width: 58rem;
   color: var(--formant-soft);
   font-size: clamp(1rem, 1.6vw, 1.25rem);
@@ -448,7 +450,7 @@ header-actions .formant-button:focus-visible {
 }
 
 .formant-page-hero h1 { margin-top: var(--space-2); }
-.formant-page-hero > p:last-child { margin-top: 28px; }
+.formant-page-hero > h1 + p { margin-top: 28px; }
 
 .formant-prose {
   max-width: 66rem;
@@ -482,6 +484,47 @@ header-actions .formant-button:focus-visible {
 
 .formant-prose ul { padding-left: 1.25rem; }
 
+.formant-prose ol { padding-left: 1.4rem; }
+
+.formant-numbered-list {
+  display: grid;
+  gap: 18px;
+  margin-top: 24px;
+}
+
+.formant-copy-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: 28px;
+  background: color-mix(in oklab, var(--formant-white) 18%, transparent);
+  border: 1px solid color-mix(in oklab, var(--formant-white) 18%, transparent);
+}
+
+.formant-copy-grid section {
+  min-height: 12rem;
+  padding: clamp(20px, 3vw, 32px);
+  background: var(--formant-blue);
+}
+
+.formant-copy-grid h3 { margin-top: 0; }
+.formant-copy-grid h3 + p { margin-top: 16px; }
+
+.formant-callout {
+  margin-top: clamp(44px, 7vw, 80px);
+  padding: clamp(22px, 4vw, 40px);
+  border-block: 1px solid color-mix(in oklab, var(--formant-white) 28%, transparent);
+  background: color-mix(in oklab, var(--formant-panel) 62%, transparent);
+}
+
+.formant-callout p:last-child {
+  max-width: 46rem;
+  margin-top: 12px;
+  color: var(--formant-white);
+  font-size: clamp(1.15rem, 2vw, 1.65rem);
+  line-height: 1.4;
+}
+
 .formant-prose code {
   color: var(--formant-white);
 }
@@ -503,14 +546,60 @@ header-actions .formant-button:focus-visible {
   margin-top: 36px;
 }
 
+.formant-launch-prose {
+  max-width: 90rem;
+}
+
+.formant-launch-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(19rem, .8fr);
+  align-items: start;
+  gap: clamp(36px, 6vw, 88px);
+}
+
+.formant-launch-main {
+  max-width: none;
+  margin-top: 0;
+  gap: 22px;
+}
+
+.formant-form-section {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+  margin-top: clamp(50px, 7vw, 88px);
+  padding-top: 24px;
+  border-top: 1px solid color-mix(in oklab, var(--formant-white) 28%, transparent);
+}
+
+.formant-form-section:first-child { margin-top: 0; }
+.formant-form-section h2 { margin-top: 0; font-size: clamp(1.55rem, 3vw, 2.5rem); }
+.formant-form-section h2 + p { margin-top: 10px; }
+.formant-section-number { color: var(--formant-orange); font-size: var(--text-small); }
+
+.formant-field-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.formant-field-grid-three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
 .formant-field {
   display: grid;
   gap: 8px;
+  min-width: 0;
 }
 
-.formant-field label {
+.formant-field label,
+.formant-field legend {
   color: var(--formant-soft);
 }
+
+.formant-field legend { margin-bottom: 10px; }
+.formant-field[role="group"],
+fieldset.formant-field { padding: 0; border: 0; }
 
 .formant-field-hint {
   color: var(--formant-soft);
@@ -528,12 +617,110 @@ header-actions .formant-button:focus-visible {
   background: var(--formant-panel);
 }
 
+.formant-field input:focus,
+.formant-field textarea:focus,
+.formant-field select:focus {
+  outline: 2px solid var(--formant-orange);
+  outline-offset: 1px;
+  border-color: transparent;
+}
+
+.formant-field input:user-invalid,
+.formant-field textarea:user-invalid,
+.formant-field select:user-invalid { border-color: var(--formant-orange); }
+
 .formant-field textarea { min-height: 140px; resize: vertical; }
+
+.formant-options {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.formant-option {
+  position: relative;
+  cursor: pointer;
+}
+
+.formant-option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.formant-option span {
+  display: flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border: 1px solid color-mix(in oklab, var(--formant-white) 28%, transparent);
+  color: var(--formant-soft);
+  background: var(--formant-panel);
+}
+
+.formant-option input:checked + span {
+  color: #081034;
+  background: var(--formant-orange);
+  border-color: var(--formant-orange);
+}
+
+.formant-option input:focus-visible + span { outline: 2px solid var(--formant-white); outline-offset: 2px; }
+
+.formant-launch-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 28px;
+}
+
+.formant-launch-actions button:disabled { opacity: .45; cursor: not-allowed; }
 
 .formant-form-status {
   min-height: 1.5em;
   color: var(--formant-orange);
 }
+
+.formant-launch-aside {
+  position: sticky;
+  top: calc(var(--header-height) + 28px);
+  display: grid;
+  gap: 26px;
+  padding: clamp(22px, 3vw, 34px);
+  border: 1px solid color-mix(in oklab, var(--formant-white) 26%, transparent);
+  background: color-mix(in oklab, var(--formant-panel) 82%, transparent);
+}
+
+.formant-readiness {
+  display: grid;
+  gap: 18px;
+}
+
+.formant-readiness > div:first-child {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.formant-readiness strong { font-size: 1.55rem; font-weight: 450; }
+.formant-readiness-track { height: 3px; background: color-mix(in oklab, var(--formant-white) 18%, transparent); }
+.formant-readiness-track span { display: block; width: 0; height: 100%; background: var(--formant-orange); transition: width .25s ease; }
+
+.formant-summary-list { display: grid; }
+.formant-summary-list div { padding-block: 14px; border-top: 1px solid color-mix(in oklab, var(--formant-white) 22%, transparent); }
+.formant-summary-list dt { color: var(--formant-soft); font-size: var(--text-small); }
+.formant-summary-list dd { margin-top: 7px; overflow-wrap: anywhere; line-height: 1.4; }
+
+.formant-local-note {
+  color: var(--formant-soft) !important;
+  font-size: var(--text-small) !important;
+  line-height: 1.5 !important;
+}
+
+.formant-manifest-preview { border-top: 1px solid color-mix(in oklab, var(--formant-white) 22%, transparent); padding-top: 16px; }
+.formant-manifest-preview summary { cursor: pointer; }
+.formant-manifest-preview pre { max-height: 28rem; margin-top: 14px; font-size: .75rem; }
 
 footer[data-formant-footer] address {
   max-width: 26rem;
@@ -601,6 +788,12 @@ dialog#menu menu-subnav { margin-top: 24px; color: var(--formant-soft); }
 dialog#menu a { text-decoration: none; }
 dialog#menu a:hover { color: var(--formant-orange); }
 
+@media (max-width: 1023px) {
+  .formant-launch-shell { grid-template-columns: 1fr; }
+  .formant-launch-aside { position: static; }
+  .formant-field-grid-three { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
 @media (min-width: 700px) {
   .formant-card { grid-column: span 6; }
   .formant-step { grid-column: span 6; }
@@ -653,6 +846,15 @@ dialog#menu a:hover { color: var(--formant-orange); }
     font-size: 15.5px;
     line-height: 1.42;
   }
+  .formant-copy-grid,
+  .formant-field-grid,
+  .formant-field-grid-three { grid-template-columns: 1fr; }
+  .formant-copy-grid section { min-height: 0; }
+  .formant-form-section { grid-template-columns: 2rem minmax(0, 1fr); }
+  .formant-options { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .formant-launch-actions { display: grid; grid-template-columns: 1fr; }
+  .formant-launch-actions .formant-button { width: 100%; justify-content: center; }
+  .formant-launch-aside { padding: 20px; }
   .formant-header-ca {
     min-width: 6.5rem;
     grid-template-columns: auto minmax(0, 1fr);
