@@ -325,7 +325,9 @@ header-actions .formant-button:focus-visible {
   position: relative;
 }
 
-.formant-scene-section product-scene {
+.formant-scene-frame {
+  display: block;
+  border: 0;
   aspect-ratio: 1250 / 610;
   width: 100%;
   min-height: 300px;
@@ -620,7 +622,7 @@ dialog#menu a:hover { color: var(--formant-orange); }
     max-width: 38rem;
   }
   .formant-scene-section { min-height: 760px; }
-  .formant-scene-section product-scene {
+  .formant-scene-section .formant-scene-frame {
     position: absolute;
     inset: 80px var(--margin) auto 30%;
     width: calc(70% - var(--margin));
@@ -664,7 +666,7 @@ dialog#menu a:hover { color: var(--formant-orange); }
     right: var(--margin);
   }
   .formant-index { top: var(--header-height); }
-  .formant-scene-section product-scene { mask-image: none; }
+  .formant-scene-frame { mask-image: none; }
   dialog#menu nav[data-grid] { grid-template-columns: 1fr; }
   header-actions {
     display: flex !important;

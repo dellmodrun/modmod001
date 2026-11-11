@@ -269,7 +269,7 @@ function sceneFilters() {
 function sceneSection(id, label, title, body, scene, view) {
   return `<section id="${id}" class="formant-scene-section">
     <div class="formant-scene-copy"><p class="formant-label">${label}</p><h2>${title}</h2><p>${body}</p></div>
-    <product-scene data-src="${base}/scenes/${scene}/index.html" data-view="${view}" data-astro-cid-p6l2sf4c="true"><iframe title="${title}" tabindex="-1" data-loading data-astro-cid-p6l2sf4c></iframe></product-scene>
+    <iframe class="formant-scene-frame" src="${base}/scenes/${scene}/index.html?fixed=1&amp;w=1250&amp;h=610&amp;${view}" title="${title}" tabindex="-1" loading="lazy"></iframe>
   </section>`;
 }
 
