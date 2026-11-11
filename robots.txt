@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://joinformant.fun/sitemap-index.xml
+Sitemap: https://dellmodrun.github.io/modmod001/sitemap-index.xml
