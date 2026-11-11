@@ -4,5 +4,8 @@
   "type": "module",
   "scripts": {
     "start": "node server.mjs"
+  },
+  "devDependencies": {
+    "@solana/web3.js": "3.2.1"
   }
 }

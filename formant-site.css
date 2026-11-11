@@ -722,6 +722,20 @@ fieldset.formant-field { padding: 0; border: 0; }
 .formant-manifest-preview summary { cursor: pointer; }
 .formant-manifest-preview pre { max-height: 28rem; margin-top: 14px; font-size: .75rem; }
 
+.formant-launch-receipt {
+  display: grid;
+  gap: 18px;
+  padding-top: 22px;
+  border-top: 1px solid var(--formant-orange);
+}
+
+.formant-launch-receipt[hidden] { display: none; }
+.formant-launch-receipt dl { display: grid; gap: 14px; }
+.formant-launch-receipt dt { color: var(--formant-soft); font-size: var(--text-small); }
+.formant-launch-receipt dd { margin-top: 5px; overflow-wrap: anywhere; line-height: 1.4; }
+.formant-launch-receipt code { font-size: .78rem; }
+.formant-launch-receipt .formant-button { width: 100%; justify-content: center; }
+
 footer[data-formant-footer] address {
   max-width: 26rem;
 }

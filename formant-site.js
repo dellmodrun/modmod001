@@ -2,6 +2,11 @@ const base = "/modmod001";
 const FORMANT_CONFIG = {
   contractAddress: "TBA",
   xUrl: "https://x.com/formantonwork",
+  memoProgram: "Memo4c2pN8afCj432Lb7RMVKi9PbQnnW7ewFFaV3oAH",
+  rpc: {
+    "solana-devnet": "https://api.devnet.solana.com",
+    "solana-mainnet": "https://api.mainnet-beta.solana.com",
+  },
 };
 
 const routes = {
@@ -426,6 +431,7 @@ artifact + verifier → settlement → dissolve</code></pre>
       <h2>Settlement records</h2><p>A completed record includes the manifest hash, accepted artifact hashes, verifier result, payments, contribution split, deployer signature and closure transaction.</p>
       <h2>Manifest fields</h2><div class="formant-copy-grid"><section><h3>Intent</h3><p>Human-readable objective, delivery target and deadline. It states what must exist, not which agent must create it.</p></section><section><h3>Capabilities</h3><p>Typed requirements, dependencies, acceptable outputs and quote constraints used during cluster composition.</p></section><section><h3>Policy</h3><p>Network, spend ceilings, allowed programs, context boundary, expiry and deployment authority.</p></section><section><h3>Settlement</h3><p>Milestones, verifier description, refund behavior, contributor allocation and optional creator-fee routing.</p></section></div>
       <h2>Recommended verification levels</h2><ul><li><strong>Deterministic:</strong> tests, hashes, simulations and onchain receipts.</li><li><strong>Attested:</strong> a named reviewer or operator signs acceptance.</li><li><strong>Threshold:</strong> multiple independent reviewers must agree.</li><li><strong>Composite:</strong> deterministic checks pass before human approval is requested.</li></ul>
+      <h2>Onchain launch receipt</h2><p>The Launch workspace can hash the complete <code>formant.task.v1</code> manifest with SHA-256 and publish the task ID, hash and selected network through Solana's Memo program. The wallet is included as a required signer, so the resulting transaction proves which address approved that exact manifest.</p><p>The receipt contains no transfer instruction and does not escrow the task budget. Its purpose is to create a durable, independently verifiable launch record before execution begins.</p>
       <h2>Start safely</h2><p>Use devnet or a small mainnet budget, keep the per-action maximum below the total budget, write a verifier that can reject an incomplete artifact and avoid giving a task wallet authority that the task does not require.</p>
       <aside class="formant-callout"><p class="formant-label">Portable by design</p><p>The compiler on the Launch page creates a plain JSON manifest. You can inspect, store, diff and sign it without depending on the interface that produced it.</p></aside>`,
   },
@@ -458,7 +464,7 @@ artifact + verifier → settlement → dissolve</code></pre>
 
           <section class="formant-form-section" aria-labelledby="launch-policy"><div class="formant-section-number">04</div><div><h2 id="launch-policy">Authority and privacy</h2><p>Choose where the task may operate and how much context each participant receives.</p></div></section>
           <div class="formant-field-grid">
-            <div class="formant-field"><label for="network">Network</label><select id="network" name="network"><option value="solana-mainnet">Solana mainnet</option><option value="solana-devnet">Solana devnet</option><option value="offchain">Offchain only</option></select></div>
+            <div class="formant-field"><label for="network">Network</label><select id="network" name="network"><option value="solana-devnet">Solana devnet</option><option value="solana-mainnet">Solana mainnet</option><option value="offchain">Offchain only</option></select></div>
             <div class="formant-field"><label for="privacy">Context policy</label><select id="privacy" name="privacy"><option value="compartmentalized">Compartmentalized by role</option><option value="shared">Shared within the cluster</option><option value="public">Public task</option></select></div>
             <div class="formant-field"><label for="deployment-mode">Deployment authority</label><select id="deployment-mode" name="deployment_mode"><option value="approval-required">Operator approval required</option><option value="scoped-adapter">Scoped deployment adapter</option><option value="artifact-only">Artifact delivery only</option></select></div>
             <div class="formant-field"><label for="refund-policy">Incomplete-task policy</label><select id="refund-policy" name="refund_policy"><option value="refund-uncommitted">Refund uncommitted budget</option><option value="review-open-commitments">Review open commitments</option><option value="extend-by-approval">Allow deadline extension by approval</option></select></div>
@@ -474,14 +480,15 @@ artifact + verifier → settlement → dissolve</code></pre>
           </div>
           <div class="formant-field"><label for="operator-wallet">Operator wallet</label><input id="operator-wallet" name="operator_wallet" type="text" autocomplete="off" spellcheck="false" placeholder="Optional Solana address for deployment attribution"></div>
 
-          <div class="formant-launch-actions"><button class="formant-button" data-primary type="submit">Compile manifest</button><button class="formant-button" id="formant-copy-manifest" type="button">Copy JSON</button><button class="formant-button" id="formant-reset-manifest" type="button">Reset</button><a class="formant-button" href="${base}/docs">Manifest reference</a></div>
+          <div class="formant-launch-actions"><button class="formant-button" data-primary type="submit">Compile manifest</button><button class="formant-button" id="formant-publish-receipt" type="button">Publish launch receipt</button><button class="formant-button" id="formant-copy-manifest" type="button">Copy JSON</button><button class="formant-button" id="formant-reset-manifest" type="button">Reset</button><a class="formant-button" href="${base}/docs">Manifest reference</a></div>
           <p class="formant-form-status" role="status" aria-live="polite"></p>
         </form>
         <aside class="formant-launch-aside" aria-label="Task readiness">
           <div class="formant-readiness"><div><p class="formant-label">Manifest readiness</p><strong id="formant-readiness-value">0 / 6</strong></div><div class="formant-readiness-track" aria-hidden="true"><span id="formant-readiness-bar"></span></div></div>
           <dl class="formant-summary-list"><div><dt>Outcome</dt><dd id="summary-objective">Not defined</dd></div><div><dt>Capabilities</dt><dd id="summary-capabilities">3 selected</dd></div><div><dt>Budget</dt><dd id="summary-budget">Not bounded</dd></div><div><dt>Deadline</dt><dd id="summary-deadline">Not set</dd></div><div><dt>Policy</dt><dd id="summary-policy">Compartmentalized</dd></div><div><dt>Verification</dt><dd id="summary-verifier">Not defined</dd></div></dl>
-          <p class="formant-local-note">Drafts stay in this browser. Compiling downloads a portable JSON manifest; it does not move funds.</p>
+          <p class="formant-local-note">Drafts stay in this browser. Compiling downloads a portable JSON manifest. Publishing creates a signed Memo receipt and uses only the standard Solana network fee; it does not escrow the task budget.</p>
           <details class="formant-manifest-preview"><summary>JSON preview</summary><pre><code id="formant-manifest-preview">Complete the required fields to build the preview.</code></pre></details>
+          <section class="formant-launch-receipt" id="formant-launch-receipt" hidden aria-live="polite"><p class="formant-label">Launch receipt confirmed</p><dl><div><dt>Network</dt><dd id="receipt-network"></dd></div><div><dt>Manifest SHA-256</dt><dd><code id="receipt-hash"></code></dd></div><div><dt>Transaction</dt><dd><code id="receipt-signature"></code></dd></div></dl><a class="formant-button" id="receipt-explorer" target="_blank" rel="noreferrer">Open in Solana Explorer</a></section>
         </aside>
       </div>`,
   },
@@ -534,6 +541,7 @@ function setupManifestCompiler() {
   const form = document.querySelector("#formant-manifest-form");
   if (!form) return;
   const storageKey = "formant-task-draft-v1";
+  const identityKey = "formant-task-identity-v1";
   const deadlineField = form.elements.namedItem("deadline");
   const budgetField = form.elements.namedItem("budget");
   const perActionField = form.elements.namedItem("per_action_max");
@@ -541,7 +549,20 @@ function setupManifestCompiler() {
   const allowlistField = form.elements.namedItem("program_allowlist");
   const status = form.querySelector(".formant-form-status");
   const copyButton = form.querySelector("#formant-copy-manifest");
+  const publishButton = form.querySelector("#formant-publish-receipt");
   const resetButton = form.querySelector("#formant-reset-manifest");
+  let taskIdentity;
+
+  function renewTaskIdentity() {
+    taskIdentity = {
+      id: crypto.randomUUID?.() ?? `task-${Date.now().toString(36)}`,
+      created_at: new Date().toISOString(),
+    };
+    try { localStorage.setItem(identityKey, JSON.stringify(taskIdentity)); } catch {}
+  }
+
+  try { taskIdentity = JSON.parse(localStorage.getItem(identityKey) || "null"); } catch {}
+  if (!taskIdentity?.id || !taskIdentity?.created_at) renewTaskIdentity();
 
   const lines = (value) => String(value ?? "").split(/\r?\n|,/).map((item) => item.trim()).filter(Boolean);
   const capabilities = () => [...form.querySelectorAll('input[name="capabilities"]:checked')].map((input) => input.value);
@@ -552,7 +573,7 @@ function setupManifestCompiler() {
     const deadline = new Date(fieldValue("deadline"));
     const manifest = {
       version: "formant.task.v1",
-      id: final ? (crypto.randomUUID?.() ?? `task-${Date.now().toString(36)}`) : "draft",
+      id: taskIdentity.id,
       intent: {
         objective: fieldValue("objective"),
         type: fieldValue("task_type"),
@@ -585,7 +606,7 @@ function setupManifestCompiler() {
         operator_wallet: fieldValue("operator_wallet") || null,
       },
       state: "draft",
-      created_at: final ? new Date().toISOString() : null,
+      created_at: taskIdentity.created_at,
     };
     return manifest;
   }
@@ -662,6 +683,7 @@ function setupManifestCompiler() {
     document.querySelector("#summary-verifier").textContent = verifier ? (verifier.length > 72 ? `${verifier.slice(0, 69)}…` : verifier) : "Not defined";
     document.querySelector("#formant-manifest-preview").textContent = JSON.stringify(createManifest(false), null, 2);
     copyButton.disabled = ready < checks.length;
+    publishButton.disabled = ready < checks.length || fieldValue("network") === "offchain";
     if (save) saveDraft();
   }
 
@@ -679,10 +701,85 @@ function setupManifestCompiler() {
       status.textContent = "Clipboard access was unavailable. Open the JSON preview and copy it manually.";
     }
   });
+  publishButton?.addEventListener("click", async () => {
+    updateWorkspace();
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+    const network = fieldValue("network");
+    if (network === "offchain") { status.textContent = "Choose Solana devnet or mainnet to publish an onchain receipt."; return; }
+    if (network === "solana-mainnet" && !window.confirm("Publish this manifest receipt to Solana mainnet? Your wallet will pay the network fee.")) return;
+    const sdk = window.solanaWeb3;
+    if (!sdk) { status.textContent = "The Solana transaction library did not load. Reload the page and try again."; return; }
+
+    if (!connectedWallet) {
+      const wallets = detectSolanaWallets();
+      if (!wallets.length) { openWalletDialog([]); status.textContent = "Install or enable a Solana wallet before publishing."; return; }
+      if (wallets.length > 1) { openWalletDialog(wallets); status.textContent = "Choose a wallet, then click Publish launch receipt again."; return; }
+      await connectSolanaWallet(wallets[0], document.querySelector("#formant-wallet-connect"));
+    }
+    if (!connectedWallet) return;
+
+    const originalLabel = publishButton.textContent;
+    publishButton.disabled = true;
+    publishButton.textContent = "Preparing transaction…";
+    status.textContent = "Hashing the manifest and requesting a recent blockhash…";
+    try {
+      const manifest = createManifest(false);
+      const manifestJson = JSON.stringify(manifest);
+      const hashBuffer = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(manifestJson));
+      const manifestHash = [...new Uint8Array(hashBuffer)].map((byte) => byte.toString(16).padStart(2, "0")).join("");
+      const endpoint = FORMANT_CONFIG.rpc[network];
+      const connection = new sdk.Connection(endpoint, "confirmed");
+      const { blockhash, lastValidBlockHeight } = await connection.getLatestBlockhash("confirmed");
+      const signer = new sdk.PublicKey(connectedWallet.address);
+      const memo = `FORMANT_TASK_V1|id=${manifest.id}|sha256=${manifestHash}|network=${network}`;
+      const instruction = new sdk.TransactionInstruction({
+        programId: new sdk.PublicKey(FORMANT_CONFIG.memoProgram),
+        keys: [{ pubkey: signer, isSigner: true, isWritable: false }],
+        data: new TextEncoder().encode(memo),
+      });
+      const transaction = new sdk.Transaction({ feePayer: signer, recentBlockhash: blockhash }).add(instruction);
+      publishButton.textContent = "Approve in wallet…";
+      status.textContent = "Review and approve the launch receipt in your wallet. This transaction contains no transfer instruction.";
+      let signature;
+      if (typeof connectedWallet.provider.signAndSendTransaction === "function") {
+        const result = await connectedWallet.provider.signAndSendTransaction(transaction, { preflightCommitment: "confirmed" });
+        signature = typeof result === "string" ? result : result?.signature;
+      } else if (typeof connectedWallet.provider.signTransaction === "function") {
+        const signed = await connectedWallet.provider.signTransaction(transaction);
+        signature = await connection.sendRawTransaction(signed.serialize(), { skipPreflight: false, preflightCommitment: "confirmed" });
+      } else {
+        throw new Error("This wallet cannot sign Solana transactions.");
+      }
+      if (!signature) throw new Error("The wallet did not return a transaction signature.");
+      publishButton.textContent = "Confirming…";
+      await connection.confirmTransaction({ signature, blockhash, lastValidBlockHeight }, "confirmed");
+      const clusterQuery = network === "solana-devnet" ? "?cluster=devnet" : "";
+      const receipt = { task_id: manifest.id, manifest_sha256: manifestHash, network, wallet: connectedWallet.address, signature, confirmed_at: new Date().toISOString() };
+      try {
+        const prior = JSON.parse(localStorage.getItem("formant-launch-receipts-v1") || "[]");
+        localStorage.setItem("formant-launch-receipts-v1", JSON.stringify([receipt, ...prior].slice(0, 20)));
+      } catch {}
+      document.querySelector("#receipt-network").textContent = network.replaceAll("-", " ");
+      document.querySelector("#receipt-hash").textContent = manifestHash;
+      document.querySelector("#receipt-signature").textContent = signature;
+      const explorer = document.querySelector("#receipt-explorer");
+      explorer.href = `https://explorer.solana.com/tx/${signature}${clusterQuery}`;
+      document.querySelector("#formant-launch-receipt").hidden = false;
+      status.textContent = "Launch receipt confirmed on Solana. The manifest hash and signer are now independently verifiable.";
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      status.textContent = /403|429|fetch/i.test(message) ? "The public Solana RPC is unavailable or rate-limited. Wait briefly and try again." : message;
+    } finally {
+      publishButton.textContent = originalLabel;
+      updateWorkspace({ save: false });
+    }
+  });
   resetButton?.addEventListener("click", () => {
     if (!window.confirm("Clear this local task draft?")) return;
     form.reset();
     try { localStorage.removeItem(storageKey); } catch {}
+    renewTaskIdentity();
+    document.querySelector("#formant-launch-receipt").hidden = true;
     status.textContent = "Local draft cleared.";
     updateWorkspace({ save: false });
   });
@@ -784,8 +881,10 @@ async function connectSolanaWallet(wallet, button) {
     button.textContent = `${address.slice(0, 4)}…${address.slice(-4)}`;
     setActionStatus(`${wallet.name} connected. Click the address to disconnect.`);
     document.querySelector("#formant-wallet-dialog")?.close();
+    return true;
   } catch (error) {
     setActionStatus(error instanceof Error ? error.message : "Wallet connection was cancelled.");
+    return false;
   }
 }
 
