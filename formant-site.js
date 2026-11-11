@@ -95,10 +95,10 @@ function updateChrome() {
   }
   if (headerActions && !headerActions.querySelector("#formant-wallet-connect")) {
     headerActions.insertAdjacentHTML("afterbegin", `
-      <button class="formant-button formant-top-button" id="formant-wallet-connect" type="button">Connect wallet</button>
-      <a class="formant-button formant-icon-button" id="formant-x-link" href="#" aria-label="Formant on X" title="Official X link: TBA">
+      <a class="formant-button formant-icon-button" id="formant-x-link" data-button href="#" aria-label="Formant on X" title="Official X link: TBA">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-      </a>`);
+      </a>
+      <button class="formant-button formant-top-button" id="formant-wallet-connect" data-button type="button">Connect wallet</button>`);
   }
 
   const menu = document.querySelector("dialog#menu");
@@ -349,10 +349,10 @@ artifact + verifier → settlement → dissolve</code></pre>
     title: "Start with a bounded objective.",
     intro: "Describe the work and compile a portable task manifest. The file can be reviewed before any agent receives money or authority.",
     body: `
-      <form class="formant-manifest" id="formant-manifest-form">
+      <form class="formant-manifest" id="formant-manifest-form" lang="en">
         <div class="formant-field"><label for="objective">Objective</label><textarea id="objective" name="objective" required placeholder="What must exist when this task is complete?"></textarea></div>
         <div class="formant-field"><label for="budget">Maximum budget in SOL</label><input id="budget" name="budget" type="number" min="0" step="0.01" required placeholder="1.00"></div>
-        <div class="formant-field"><label for="deadline">Deadline</label><input id="deadline" name="deadline" type="datetime-local" required></div>
+        <div class="formant-field"><label for="deadline">Deadline (UTC)</label><input id="deadline" name="deadline" type="text" inputmode="numeric" autocomplete="off" spellcheck="false" placeholder="YYYY-MM-DDTHH:MMZ" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}Z" aria-describedby="deadline-hint" required><small class="formant-field-hint" id="deadline-hint">Use UTC format, for example 2026-11-14T00:00Z.</small></div>
         <div class="formant-field"><label for="privacy">Context policy</label><select id="privacy" name="privacy"><option value="compartmentalized">Compartmentalized by role</option><option value="shared">Shared within the cluster</option><option value="public">Public task</option></select></div>
         <div class="formant-field"><label for="verifier">Completion evidence</label><textarea id="verifier" name="verifier" required placeholder="Tests, deployment receipt, signed review or another explicit condition"></textarea></div>
         <p class="formant-actions"><button class="formant-button" data-primary type="submit">Compile task manifest</button><a class="formant-button" href="${base}/docs">Manifest reference</a></p>
@@ -378,14 +378,24 @@ function renderPage(key) {
 function setupManifestCompiler() {
   const form = document.querySelector("#formant-manifest-form");
   if (!form) return;
+  const deadlineField = form.elements.namedItem("deadline");
+  deadlineField?.addEventListener("input", () => deadlineField.setCustomValidity(""));
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     const data = new FormData(form);
+    const deadlineInput = deadlineField;
+    const deadline = new Date(String(data.get("deadline")).trim());
+    if (Number.isNaN(deadline.getTime())) {
+      deadlineInput.setCustomValidity("Enter a valid UTC deadline in YYYY-MM-DDTHH:MMZ format.");
+      deadlineInput.reportValidity();
+      return;
+    }
+    deadlineInput.setCustomValidity("");
     const manifest = {
       version: "formant.task.v0",
       intent: data.get("objective"),
       budget: { asset: "SOL", max: data.get("budget") },
-      deadline: new Date(data.get("deadline")).toISOString(),
+      deadline: deadline.toISOString(),
       context_policy: data.get("privacy"),
       verifier: { description: data.get("verifier") },
       wallet_policy: { program_allowlist: [], per_action_max: null },

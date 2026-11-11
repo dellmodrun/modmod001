@@ -507,6 +507,11 @@ header-actions .formant-button:focus-visible {
   color: var(--formant-soft);
 }
 
+.formant-field-hint {
+  color: var(--formant-soft);
+  font-size: var(--text-small);
+}
+
 .formant-field input,
 .formant-field textarea,
 .formant-field select {
