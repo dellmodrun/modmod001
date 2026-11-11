@@ -95,9 +95,16 @@ function setupMenu() {
   document.addEventListener("keydown", (event) => {
     const target = event.target;
     const isTyping = target instanceof HTMLElement && (target.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(target.tagName));
-    if (!isTyping && !event.metaKey && !event.ctrlKey && !event.altKey && event.key.toLowerCase() === "m") {
-      event.preventDefault();
-      menu.open ? closeMenu() : openMenu();
+    if (!isTyping && !event.metaKey && !event.ctrlKey && !event.altKey) {
+      const key = event.key.toLowerCase();
+      if (key === "m") {
+        event.preventDefault();
+        menu.open ? closeMenu() : openMenu();
+      }
+      if (key === "l") {
+        event.preventDefault();
+        window.location.assign(`${base}/contact`);
+      }
     }
   });
 }
@@ -135,8 +142,7 @@ function updateChrome() {
   if (menu) {
     menu.innerHTML = `
       <menu-top data-container="true">
-        <a href="${base}/" data-logo="mark" aria-label="Formant home"></a>
-        <a href="${base}/" data-logo="word"><span data-sr-only>Formant</span></a>
+        <a href="${base}/" data-logo="word" aria-label="Formant home"><span data-sr-only>Formant</span></a>
         <menu-actions>
           <a href="${base}/contact" data-button data-sign-in>Launch [L]</a>
           <button type="button" data-button data-menu-close aria-label="Close menu">Close [M]</button>
@@ -398,7 +404,7 @@ function renderPage(key) {
   const page = pages[key];
   if (!target || !page) return;
   target.innerHTML = `<main class="formant-content" data-pagefind-body>
-    <header class="formant-page-hero"><p class="formant-kicker">${page.kicker}</p><h1>${page.title}</h1><p>${page.intro}</p></header>
+    <header class="formant-page-hero"><p class="formant-kicker">${page.kicker}</p><h1>${page.title}</h1><p>${page.intro}</p><p class="formant-action-status" id="formant-action-status" aria-live="polite"></p></header>
     <article class="formant-section formant-prose">${page.body}</article>
     <section class="formant-section formant-cta"><p class="formant-actions"><a class="formant-button" data-primary href="${base}/contact">Launch a task</a><a class="formant-button" href="${base}/about">Protocol overview</a></p></section>
   </main>`;

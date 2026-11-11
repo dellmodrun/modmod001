@@ -328,6 +328,9 @@ header-actions .formant-button:focus-visible {
 .formant-scene-frame {
   display: block;
   border: 0;
+  background: var(--formant-blue);
+  filter: url("#scene-tone");
+  mix-blend-mode: normal;
   aspect-ratio: 1250 / 610;
   width: 100%;
   min-height: 300px;
@@ -667,6 +670,8 @@ dialog#menu a:hover { color: var(--formant-orange); }
   }
   .formant-index { top: var(--header-height); }
   .formant-scene-frame { mask-image: none; }
+  dialog#menu menu-top { gap: 8px; }
+  dialog#menu menu-actions { margin-left: auto; }
   dialog#menu nav[data-grid] { grid-template-columns: 1fr; }
   header-actions {
     display: flex !important;
