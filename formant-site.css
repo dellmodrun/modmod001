@@ -561,6 +561,20 @@ footer[data-formant-footer] address {
 }
 footer[data-formant-footer] > p { color: var(--formant-soft); }
 
+dialog#menu {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: var(--formant-white);
+  background: var(--formant-blue);
+}
+dialog#menu:not([open]) { display: none; }
+dialog#menu::backdrop { background: rgb(0 13 96 / .72); backdrop-filter: blur(8px); }
+
 dialog#menu menu-top {
   display: flex;
   align-items: center;

@@ -1,1 +1,0 @@
-import{n as e}from"./status.CzZ9jybu.js";var t=class extends HTMLElement{async connectedCallback(){try{let{state:t}=await e();this.dataset.state=t;let n=JSON.parse(this.dataset.copy??`{}`);this.querySelector(`span`)?.replaceChildren(`, ${n[t]}`)}catch(e){console.error(`Loading the service status failed`,e)}}};customElements.define(`status-mark`,t);

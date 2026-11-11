@@ -63,6 +63,7 @@ function boot() {
     if (route.home) renderHome();
     if (route.page) renderPage(route.page);
     updateChrome();
+    setupMenu();
     setupPublicActions();
     document.documentElement.dataset.formantReady = "true";
   } catch (error) {
@@ -70,6 +71,35 @@ function boot() {
     console.error(error);
   }
  }
+}
+
+function setupMenu() {
+  const menu = document.querySelector("dialog#menu");
+  if (!menu) return;
+
+  const openMenu = () => {
+    if (!menu.open) menu.showModal();
+    menu.querySelector("a, button")?.focus({ preventScroll: true });
+  };
+  const closeMenu = () => {
+    if (menu.open) menu.close();
+  };
+
+  document.querySelectorAll("[data-menu-trigger]").forEach((trigger) => {
+    trigger.addEventListener("click", openMenu);
+  });
+  menu.querySelector("[data-menu-close]")?.addEventListener("click", closeMenu);
+  menu.addEventListener("click", (event) => {
+    if (event.target === menu || event.target.closest("a")) closeMenu();
+  });
+  document.addEventListener("keydown", (event) => {
+    const target = event.target;
+    const isTyping = target instanceof HTMLElement && (target.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(target.tagName));
+    if (!isTyping && !event.metaKey && !event.ctrlKey && !event.altKey && event.key.toLowerCase() === "m") {
+      event.preventDefault();
+      menu.open ? closeMenu() : openMenu();
+    }
+  });
 }
 
 function updateChrome() {
@@ -109,7 +139,7 @@ function updateChrome() {
         <a href="${base}/" data-logo="word"><span data-sr-only>Formant</span></a>
         <menu-actions>
           <a href="${base}/contact" data-button data-sign-in>Launch [L]</a>
-          <button type="button" data-button commandfor="menu" command="close" aria-label="Close menu">Close [M]</button>
+          <button type="button" data-button data-menu-close aria-label="Close menu">Close [M]</button>
         </menu-actions>
       </menu-top>
       <nav data-grid aria-label="Main navigation">

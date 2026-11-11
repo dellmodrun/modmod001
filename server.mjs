@@ -8,7 +8,7 @@ const port=Number(process.env.PORT||4427);
 const mime={".html":"text/html; charset=utf-8",".js":"text/javascript; charset=utf-8",".mjs":"text/javascript; charset=utf-8",".css":"text/css; charset=utf-8",".json":"application/json; charset=utf-8",".xml":"application/xml; charset=utf-8",".txt":"text/plain; charset=utf-8",".svg":"image/svg+xml",".png":"image/png",".jpg":"image/jpeg",".jpeg":"image/jpeg",".webp":"image/webp",".avif":"image/avif",".gif":"image/gif",".ico":"image/x-icon",".woff":"font/woff",".woff2":"font/woff2",".ttf":"font/ttf",".otf":"font/otf",".mp4":"video/mp4",".webm":"video/webm",".mp3":"audio/mpeg",".wav":"audio/wav",".wasm":"application/wasm",".pdf":"application/pdf"};
 
 function resolveFile(pathname){
-  const clean=decodeURIComponent(pathname).replace(/^\/+/,"");
+  const clean=decodeURIComponent(pathname).replace(/^\/modmod001(?:\/|$)/,"").replace(/^\/+/,"");
   const target=path.resolve(root,clean);
   if(target!==root&&!target.startsWith(root+path.sep))return null;
   const candidates=[target,path.join(target,"index.html")];
@@ -19,21 +19,16 @@ function resolveFile(pathname){
   return null;
 }
 
-async function proxyApi(request,response){
-  const target=new URL(request.url,"https://www.hacktron.ai");
-  const chunks=[];for await(const chunk of request)chunks.push(chunk);
-  const upstream=await fetch(target,{method:request.method,headers:{"content-type":request.headers["content-type"]||"application/json","user-agent":request.headers["user-agent"]||"Mozilla/5.0"},body:["GET","HEAD"].includes(request.method)?undefined:Buffer.concat(chunks)});
-  response.writeHead(upstream.status,Object.fromEntries([...upstream.headers].filter(([key])=>!["content-encoding","transfer-encoding","content-length"].includes(key))));
-  response.end(Buffer.from(await upstream.arrayBuffer()));
-}
-
 const server=http.createServer(async(request,response)=>{
   try{
     const url=new URL(request.url,"http://localhost");
-    if(url.pathname.startsWith("/api/"))return await proxyApi(request,response);
-    if(url.pathname.startsWith("/_vercel/")){response.writeHead(204);return response.end()}
+    if(url.pathname.startsWith("/api/")){response.writeHead(404,{"content-type":"application/json; charset=utf-8"});return response.end('{"error":"Not found"}')}
     const file=resolveFile(url.pathname);
-    if(!file){response.writeHead(404,{"content-type":"text/plain; charset=utf-8"});return response.end("Not found")}
+    if(!file){
+      const fallback=path.join(root,"404.html");
+      response.writeHead(404,{"content-type":"text/html; charset=utf-8","cache-control":"no-cache"});
+      return fs.createReadStream(fallback).pipe(response);
+    }
     response.writeHead(200,{"content-type":mime[path.extname(file).toLowerCase()]||"application/octet-stream","cache-control":"no-cache"});
     if(request.method==="HEAD")return response.end();
     fs.createReadStream(file).pipe(response);
