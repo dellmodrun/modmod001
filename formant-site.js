@@ -1,6 +1,7 @@
 const base = "";
 const FORMANT_CONFIG = {
   contractAddress: "TBA",
+  contractAddressUrl: "https://raw.githubusercontent.com/dellmodrun/modmod001/gh-pages/ca.json",
   xUrl: "https://x.com/joinformantlab",
   memoProgram: "Memo4c2pN8afCj432Lb7RMVKi9PbQnnW7ewFFaV3oAH",
   rpc: {
@@ -802,17 +803,40 @@ function setupManifestCompiler() {
 
 let connectedWallet = null;
 
+async function fetchLiveContractAddress() {
+  try {
+    const response = await fetch(`${FORMANT_CONFIG.contractAddressUrl}?v=${Date.now()}`, { cache: "no-store" });
+    if (!response.ok) throw new Error(`CA config returned ${response.status}`);
+    const payload = await response.json();
+    const value = String(payload.contractAddress || "").trim();
+    if (value === "TBA" || /^[1-9A-HJ-NP-Za-km-z]{32,48}$/.test(value)) return value;
+  } catch (error) {
+    console.warn("Live CA config unavailable; using the bundled fallback.", error);
+  }
+  return FORMANT_CONFIG.contractAddress;
+}
+
 function setupPublicActions() {
   const walletButton = document.querySelector("#formant-wallet-connect");
   const xLink = document.querySelector("#formant-x-link");
   const caValue = document.querySelector("#formant-ca-value");
   const caCopy = document.querySelector("#formant-ca-copy");
 
-  if (caValue) caValue.textContent = FORMANT_CONFIG.contractAddress;
-  if (caCopy && FORMANT_CONFIG.contractAddress !== "TBA") {
-    caCopy.disabled = false;
+  let liveContractAddress = FORMANT_CONFIG.contractAddress;
+  const refreshContractAddress = async () => {
+    liveContractAddress = await fetchLiveContractAddress();
+    if (caValue) caValue.textContent = liveContractAddress;
+    if (caCopy) caCopy.disabled = liveContractAddress === "TBA";
+  };
+  refreshContractAddress();
+  window.setInterval(() => {
+    if (!document.hidden) refreshContractAddress();
+  }, 10000);
+
+  if (caCopy) {
     caCopy.addEventListener("click", async () => {
-      await navigator.clipboard.writeText(FORMANT_CONFIG.contractAddress);
+      if (liveContractAddress === "TBA") return;
+      await navigator.clipboard.writeText(liveContractAddress);
       caCopy.textContent = "Copied";
       setTimeout(() => { caCopy.textContent = "Copy"; }, 1400);
     });
